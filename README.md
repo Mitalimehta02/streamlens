@@ -280,10 +280,15 @@ stubbed and what differs in production, is in [docs/STATUS.md](docs/STATUS.md).
   Two sites carry a planted weather forecast so the rain-driven alert rules can
   be demonstrated on a dry day; those are labelled **DEMO FORECAST** wherever
   the number appears.
-- **The question set is translated into English and Portuguese only.** The other
-  four languages fall back to English for question text, and every non-English
-  string is machine translated and flagged as such. A native speaker should
-  review before field use.
+- **All six languages are machine-translated, not yet reviewed by native
+  speakers.** English is authored; Portuguese, Italian, French, Dutch and
+  Norwegian question labels, explanations, options, section headings and
+  glossary are our own translations, flagged `machine_translated` in the data
+  and warned about in the app. Ecology terms were translated to the established
+  term in each language rather than literally, but a native speaker should
+  review before any field use. The per-option explanations remain English in
+  every language, and any string missing in the chosen language falls back to
+  English.
 - **No accounts, and no authentication.** Anyone who can reach the API can post
   an assessment. Acceptable for a demo; not for production.
 - **The AI evaluation is small.** 29 photographs, one independent labeller, one

@@ -35,7 +35,7 @@
     "nl",
     "no"
   ],
-  "translation_note": "English is authored. Every non-English string in this file is our own translation, not text supplied by the OneAquaHealth consortium; treat it as machine translated and have a native speaker review it before field use. Languages listed in 'languages' but missing from a given string fall back to English in the app.",
+  "translation_note": "English is authored. Every non-English string in this file is our own machine translation, not text supplied by the OneAquaHealth consortium, and has not yet been reviewed by a native speaker; treat it accordingly and have one check it before field use. Ecology terms were translated to the established term in each language rather than literally - riffle/raschio/radier/stroomversnelling/stryk, weir/briglia/seuil/stuw/terskel, riparian zone/fascia ripariale/ripisylve/oeverzone/kantsone. Option explanations remain English-only in every language, as they were for Portuguese, and the app falls back to English for any string missing in the chosen language.",
   "provenance": {
     "streamcheck-fhir-docs": {
       "what": "Question ids and answer codes only.",
@@ -59,7 +59,11 @@
       "order": 1,
       "label": {
         "en": "Channel, bed and banks",
-        "pt": "Canal, leito e margens"
+        "pt": "Canal, leito e margens",
+        "it": "Alveo, letto e sponde",
+        "fr": "Chenal, lit et berges",
+        "nl": "Waterloop, bedding en oevers",
+        "no": "Elveløp, bunn og bredder"
       }
     },
     {
@@ -67,7 +71,11 @@
       "order": 2,
       "label": {
         "en": "Habitats and natural debris",
-        "pt": "Habitats e detritos naturais"
+        "pt": "Habitats e detritos naturais",
+        "it": "Habitat e detriti naturali",
+        "fr": "Habitats et débris naturels",
+        "nl": "Habitats en natuurlijk materiaal",
+        "no": "Habitater og naturlig materiale"
       }
     },
     {
@@ -75,7 +83,11 @@
       "order": 3,
       "label": {
         "en": "Flow and water appearance",
-        "pt": "Escoamento e aspeto da água"
+        "pt": "Escoamento e aspeto da água",
+        "it": "Flusso e aspetto dell'acqua",
+        "fr": "Écoulement et aspect de l'eau",
+        "nl": "Stroming en uiterlijk van het water",
+        "no": "Vannføring og vannets utseende"
       }
     },
     {
@@ -83,7 +95,11 @@
       "order": 4,
       "label": {
         "en": "Pressures on the stream",
-        "pt": "Pressões sobre o ribeiro"
+        "pt": "Pressões sobre o ribeiro",
+        "it": "Pressioni sul corso d'acqua",
+        "fr": "Pressions sur le cours d'eau",
+        "nl": "Druk op de beek",
+        "no": "Påvirkninger på bekken"
       }
     },
     {
@@ -91,7 +107,11 @@
       "order": 5,
       "label": {
         "en": "Left margin (looking downstream)",
-        "pt": "Margem esquerda (olhando para jusante)"
+        "pt": "Margem esquerda (olhando para jusante)",
+        "it": "Margine sinistro (guardando verso valle)",
+        "fr": "Rive gauche (en regardant vers l'aval)",
+        "nl": "Linkeroever (stroomafwaarts gezien)",
+        "no": "Venstre bredd (sett nedstrøms)"
       }
     },
     {
@@ -99,7 +119,11 @@
       "order": 6,
       "label": {
         "en": "Right margin (looking downstream)",
-        "pt": "Margem direita (olhando para jusante)"
+        "pt": "Margem direita (olhando para jusante)",
+        "it": "Margine destro (guardando verso valle)",
+        "fr": "Rive droite (en regardant vers l'aval)",
+        "nl": "Rechteroever (stroomafwaarts gezien)",
+        "no": "Høyre bredd (sett nedstrøms)"
       }
     },
     {
@@ -107,74 +131,142 @@
       "order": 7,
       "label": {
         "en": "Your overall assessment",
-        "pt": "A sua avaliação global"
+        "pt": "A sua avaliação global",
+        "it": "La tua valutazione complessiva",
+        "fr": "Votre évaluation globale",
+        "nl": "Jouw algemene beoordeling",
+        "no": "Din samlede vurdering"
       }
     }
   ],
   "glossary": {
     "channel": {
       "en": "The dip or cut in the ground that the stream water runs along.",
-      "pt": "A depressão no terreno por onde corre a água."
+      "pt": "A depressão no terreno por onde corre a água.",
+      "it": "L'incavo o il solco nel terreno lungo il quale scorre l'acqua.",
+      "fr": "Le creux ou l'entaille dans le sol le long duquel l'eau s'écoule.",
+      "nl": "De geul of insnijding in de grond waar het beekwater doorheen stroomt.",
+      "no": "Fordypningen eller sporet i bakken som bekkevannet renner langs."
     },
     "bed": {
       "en": "The bottom of the stream, under the water.",
-      "pt": "O fundo do ribeiro, debaixo de água."
+      "pt": "O fundo do ribeiro, debaixo de água.",
+      "it": "Il fondo del corso d'acqua, sotto l'acqua.",
+      "fr": "Le fond du cours d'eau, sous l'eau.",
+      "nl": "De bodem van de beek, onder het water.",
+      "no": "Bunnen av bekken, under vannet."
     },
     "bank": {
       "en": "The sloping side of the channel, between the water and the land above.",
-      "pt": "O lado inclinado do canal, entre a agua e o terreno."
+      "pt": "O lado inclinado do canal, entre a agua e o terreno.",
+      "it": "Il fianco in pendenza dell'alveo, tra l'acqua e il terreno sovrastante.",
+      "fr": "Le côté en pente du chenal, entre l'eau et la terre au-dessus.",
+      "nl": "De schuine zijkant van de bedding, tussen het water en het land erboven.",
+      "no": "Den skrånende siden av elveløpet, mellom vannet og landet ovenfor."
     },
     "riffle": {
       "en": "A shallow, fast stretch where water tumbles over stones and looks broken and white. Riffles mix air into the water, which stream animals need.",
-      "pt": "Troço pouco profundo e rápido, onde a água salta sobre pedras e se areja."
+      "pt": "Troço pouco profundo e rápido, onde a água salta sobre pedras e se areja.",
+      "it": "Un tratto poco profondo e veloce dove l'acqua scorre sopra le pietre e appare mossa e biancastra. I raschi immettono aria nell'acqua, di cui gli animali del corso d'acqua hanno bisogno.",
+      "fr": "Un tronçon peu profond et rapide où l'eau bouillonne sur les pierres et paraît blanche et agitée. Les radiers mélangent de l'air à l'eau, ce dont les animaux du cours d'eau ont besoin.",
+      "nl": "Een ondiep, snel stuk waar het water over stenen buitelt en wit en woelig oogt. Zulke stroomversnellingen mengen lucht door het water, wat beekdieren nodig hebben.",
+      "no": "En grunn, rask strekning der vannet velter over steiner og ser hvitt og brutt ut. Stryk blander luft inn i vannet, som dyrene i bekken trenger."
     },
     "instream habitat": {
       "en": "Any feature inside the water - stones, plants, sand banks - that small animals can live in, feed on or hide behind.",
-      "pt": "Qualquer estrutura dentro de água que sirva de abrigo ou alimento."
+      "pt": "Qualquer estrutura dentro de água que sirva de abrigo ou alimento.",
+      "it": "Qualsiasi elemento dentro l'acqua - pietre, piante, banchi di sabbia - in cui i piccoli animali possono vivere, nutrirsi o nascondersi.",
+      "fr": "Tout élément présent dans l'eau - pierres, plantes, bancs de sable - où de petits animaux peuvent vivre, se nourrir ou se cacher.",
+      "nl": "Elk element in het water - stenen, planten, zandbanken - waarin kleine dieren kunnen leven, eten of zich verschuilen.",
+      "no": "Alt som finnes i vannet - steiner, planter, sandbanker - som små dyr kan leve i, spise av eller gjemme seg bak."
     },
     "natural debris": {
       "en": "Wood and leaves that fell in by themselves. Unlike litter, this belongs in a stream and feeds it.",
-      "pt": "Madeira e folhas caídas naturalmente. Ao contrário do lixo, fazem parte do ribeiro."
+      "pt": "Madeira e folhas caídas naturalmente. Ao contrário do lixo, fazem parte do ribeiro.",
+      "it": "Legno e foglie caduti spontaneamente. A differenza dei rifiuti, fanno parte del corso d'acqua e lo alimentano.",
+      "fr": "Bois et feuilles tombés d'eux-mêmes. Contrairement aux déchets, ils ont leur place dans le cours d'eau et le nourrissent.",
+      "nl": "Hout en bladeren die er vanzelf in zijn gevallen. Anders dan zwerfvuil hoort dit in een beek thuis en voedt het de beek.",
+      "no": "Trevirke og løv som har falt uti av seg selv. I motsetning til søppel hører dette hjemme i bekken og gir den næring."
     },
     "flow": {
       "en": "How fast, and whether, the water is moving.",
-      "pt": "A velocidade a que a água se move."
+      "pt": "A velocidade a que a água se move.",
+      "it": "Quanto velocemente si muove l'acqua, e se si muove.",
+      "fr": "À quelle vitesse l'eau se déplace, et si elle se déplace.",
+      "nl": "Hoe snel het water stroomt, en of het stroomt.",
+      "no": "Hvor fort vannet beveger seg, og om det beveger seg."
     },
     "turbidity": {
       "en": "How cloudy the water is, from particles floating in it.",
-      "pt": "O grau de turvação da água."
+      "pt": "O grau de turvação da água.",
+      "it": "Quanto è torbida l'acqua a causa delle particelle in sospensione.",
+      "fr": "À quel point l'eau est trouble, du fait des particules en suspension.",
+      "nl": "Hoe troebel het water is door zwevende deeltjes.",
+      "no": "Hvor uklart vannet er på grunn av partikler som svever i det."
     },
     "abstraction": {
       "en": "Taking water out of the stream, for example by pumping it.",
-      "pt": "Retirar água do ribeiro, por exemplo com bombas."
+      "pt": "Retirar água do ribeiro, por exemplo com bombas.",
+      "it": "Prelievo di acqua dal corso d'acqua, per esempio tramite pompaggio.",
+      "fr": "Prélèvement d'eau dans le cours d'eau, par exemple par pompage.",
+      "nl": "Water uit de beek halen, bijvoorbeeld door het weg te pompen.",
+      "no": "Uttak av vann fra bekken, for eksempel ved pumping."
     },
     "longitudinal connectivity": {
       "en": "Whether animals can travel freely up and down the stream without hitting a barrier such as a weir.",
-      "pt": "Se os animais se podem mover livremente ao longo do ribeiro."
+      "pt": "Se os animais se podem mover livremente ao longo do ribeiro.",
+      "it": "Se gli animali possono spostarsi liberamente a monte e a valle senza incontrare una barriera come una briglia.",
+      "fr": "Si les animaux peuvent circuler librement vers l'amont et l'aval sans rencontrer un obstacle tel qu'un seuil.",
+      "nl": "Of dieren vrij stroomopwaarts en stroomafwaarts kunnen trekken zonder een barrière zoals een stuw tegen te komen.",
+      "no": "Om dyr kan vandre fritt opp og ned bekken uten å møte en hindring som en terskel."
     },
     "weir": {
       "en": "A low wall built across a stream that water flows over. It raises the water upstream and can stop fish moving past.",
-      "pt": "Pequeno muro atravessado no ribeiro, por cima do qual a agua passa."
+      "pt": "Pequeno muro atravessado no ribeiro, por cima do qual a agua passa.",
+      "it": "Un muretto costruito di traverso al corso d'acqua, sopra il quale l'acqua scorre. Innalza il livello a monte e può impedire il passaggio dei pesci.",
+      "fr": "Un petit mur construit en travers du cours d'eau, par-dessus lequel l'eau s'écoule. Il relève le niveau en amont et peut empêcher les poissons de passer.",
+      "nl": "Een lage muur dwars door de beek waar het water overheen stroomt. Hij verhoogt het waterpeil stroomopwaarts en kan vissen tegenhouden.",
+      "no": "En lav mur bygget tvers over bekken som vannet renner over. Den hever vannstanden oppstrøms og kan hindre fisk i å passere."
     },
     "outfall": {
       "en": "The point where a pipe or drain empties into the stream.",
-      "pt": "O ponto onde um tubo ou coletor descarrega no ribeiro."
+      "pt": "O ponto onde um tubo ou coletor descarrega no ribeiro.",
+      "it": "Il punto in cui un tubo o uno scarico sfocia nel corso d'acqua.",
+      "fr": "Le point où un tuyau ou une canalisation se déverse dans le cours d'eau.",
+      "nl": "Het punt waar een buis of riool in de beek uitmondt.",
+      "no": "Punktet der et rør eller avløp munner ut i bekken."
     },
     "sewage fungus": {
       "en": "A white or grey slimy growth on stones and plants. It is bacteria, not fungus, and it grows where waste water enters.",
-      "pt": "Crescimento viscoso branco ou cinzento, típico de entradas de águas residuais."
+      "pt": "Crescimento viscoso branco ou cinzento, típico de entradas de águas residuais.",
+      "it": "Una patina viscida bianca o grigia su pietre e piante. Sono batteri, non funghi, e crescono dove entrano acque reflue.",
+      "fr": "Un dépôt visqueux blanc ou gris sur les pierres et les plantes. Ce sont des bactéries, et non un champignon, et cela se développe là où arrivent des eaux usées.",
+      "nl": "Een witte of grijze slijmerige aangroei op stenen en planten. Het zijn bacteriën, geen schimmel, en ze groeien waar afvalwater binnenkomt.",
+      "no": "En hvit eller grå slimete begroing på steiner og planter. Det er bakterier, ikke sopp, og de vokser der avløpsvann kommer ut."
     },
     "impervious surface": {
       "en": "Ground rain cannot soak into - tarmac, concrete, paving, roofs. Rain runs straight off it into the stream.",
-      "pt": "Solo onde a chuva não se infiltra: alcatrão, betão, telhados."
+      "pt": "Solo onde a chuva não se infiltra: alcatrão, betão, telhados.",
+      "it": "Superficie in cui la pioggia non può penetrare - asfalto, cemento, pavimentazioni, tetti. La pioggia vi scorre sopra e finisce direttamente nel corso d'acqua.",
+      "fr": "Sol dans lequel la pluie ne peut pas s'infiltrer - bitume, béton, pavage, toitures. La pluie ruisselle directement vers le cours d'eau.",
+      "nl": "Grond waarin regen niet kan wegzakken - asfalt, beton, bestrating, daken. Regen stroomt er rechtstreeks vanaf, de beek in.",
+      "no": "Tette flater som regnet ikke trenger ned i - asfalt, betong, belegningsstein, tak. Regnet renner rett av og ned i bekken."
     },
     "riparian zone": {
       "en": "The strip of land right beside a stream, and the plants growing on it. It shades the water, holds the bank and filters runoff.",
-      "pt": "A faixa de terreno junto ao ribeiro e as plantas que aí crescem."
+      "pt": "A faixa de terreno junto ao ribeiro e as plantas que aí crescem.",
+      "it": "La fascia di terreno immediatamente lungo il corso d'acqua, con la vegetazione che vi cresce. Ombreggia l'acqua, trattiene la sponda e filtra il ruscellamento.",
+      "fr": "La bande de terre située juste au bord du cours d'eau, et la végétation qui y pousse. Elle ombrage l'eau, maintient la berge et filtre le ruissellement.",
+      "nl": "De strook land direct langs de beek, en de planten die daarop groeien. Die strook geeft schaduw, houdt de oever vast en filtert afstromend water.",
+      "no": "Stripen med land like ved bekken, og plantene som vokser der. Den gir skygge, holder bredden på plass og filtrerer avrenning."
     },
     "invasive species": {
       "en": "A plant or animal from another region that spreads quickly and pushes out the species that belong there.",
-      "pt": "Espécie de outra região que se espalha e substitui as nativas."
+      "pt": "Espécie de outra região que se espalha e substitui as nativas.",
+      "it": "Una pianta o un animale proveniente da un'altra regione che si diffonde rapidamente e soppianta le specie autoctone.",
+      "fr": "Une plante ou un animal venu d'une autre région, qui se propage rapidement et évince les espèces locales.",
+      "nl": "Een plant of dier uit een andere regio die zich snel verspreidt en de soorten verdringt die er thuishoren.",
+      "no": "En plante eller et dyr fra en annen region som sprer seg raskt og fortrenger artene som hører hjemme der."
     }
   },
   "questions": [
@@ -186,11 +278,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Channel form",
-        "pt": "Forma do canal"
+        "pt": "Forma do canal",
+        "it": "Forma dell'alveo",
+        "fr": "Forme du chenal",
+        "nl": "Vorm van de bedding",
+        "no": "Form på elveløpet"
       },
       "explain": {
         "en": "The shape of the ditch or valley the water runs through, seen from the side. A flat wide channel spreads water out; a steep V holds it in a narrow cut.",
-        "pt": "A forma do canal ou vale por onde a água corre, vista de lado."
+        "pt": "A forma do canal ou vale por onde a água corre, vista de lado.",
+        "it": "La forma del fosso o della valle in cui scorre l'acqua, vista di lato. Un alveo piatto e largo distribuisce l'acqua; una V ripida la trattiene in un solco stretto.",
+        "fr": "La forme du fossé ou de la vallée où l'eau s'écoule, vue de côté. Un chenal plat et large étale l'eau ; un V encaissé la retient dans une entaille étroite.",
+        "nl": "De vorm van de sloot of het dal waar het water doorheen loopt, van opzij gezien. Een vlakke brede bedding spreidt het water uit; een steile V houdt het in een smalle insnijding.",
+        "no": "Formen på grøfta eller dalen vannet renner gjennom, sett fra siden. Et flatt og bredt løp sprer vannet; en bratt V holder det i et smalt spor."
       },
       "photo_hint": {
         "en": "Best judged from a photo taken across the stream, showing both banks."
@@ -203,7 +303,11 @@
           "code": "FLAT",
           "label": {
             "en": "Flat and wide",
-            "pt": "Plano e largo"
+            "pt": "Plano e largo",
+            "it": "Piatto e largo",
+            "fr": "Plat et large",
+            "nl": "Vlak en breed",
+            "no": "Flatt og bredt"
           },
           "explain": {
             "en": "The ground on both sides is roughly level with the water and the stream is broad."
@@ -215,7 +319,11 @@
           "code": "U",
           "label": {
             "en": "U shape",
-            "pt": "Forma em U"
+            "pt": "Forma em U",
+            "it": "Forma a U",
+            "fr": "Forme en U",
+            "nl": "U-vorm",
+            "no": "U-form"
           },
           "explain": {
             "en": "Sides rise on both banks but the bottom is flat - like a bathtub."
@@ -227,7 +335,11 @@
           "code": "V",
           "label": {
             "en": "V shape, steep sides",
-            "pt": "Forma em V, margens íngremes"
+            "pt": "Forma em V, margens íngremes",
+            "it": "Forma a V, fianchi ripidi",
+            "fr": "Forme en V, versants raides",
+            "nl": "V-vorm, steile zijkanten",
+            "no": "V-form, bratte sider"
           },
           "explain": {
             "en": "The banks slope steeply down to a narrow bottom."
@@ -239,7 +351,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this if the photo does not show the banks clearly."
@@ -258,11 +374,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Channel bed",
-        "pt": "Leito do canal"
+        "pt": "Leito do canal",
+        "it": "Letto dell'alveo",
+        "fr": "Lit du chenal",
+        "nl": "Bedding van de beek",
+        "no": "Bunnen i elveløpet"
       },
       "explain": {
         "en": "What the bottom of the stream is made of. A natural bed is gravel, sand, stones or mud that the stream itself shaped. An artificial bed is concrete or another hard surface people laid down.",
-        "pt": "De que é feito o fundo do ribeiro: natural (areia, pedras, lodo) ou artificial (betão)."
+        "pt": "De que é feito o fundo do ribeiro: natural (areia, pedras, lodo) ou artificial (betão).",
+        "it": "Di cosa è fatto il fondo del corso d'acqua. Un letto naturale è ghiaia, sabbia, pietre o fango modellati dal corso d'acqua stesso. Un letto artificiale è cemento o un'altra superficie dura posata dall'uomo.",
+        "fr": "Ce qui constitue le fond du cours d'eau. Un lit naturel est fait de graviers, de sable, de pierres ou de vase façonnés par le cours d'eau lui-même. Un lit artificiel est en béton ou en un autre revêtement dur posé par l'homme.",
+        "nl": "Waar de bodem van de beek uit bestaat. Een natuurlijke bedding bestaat uit grind, zand, stenen of slib die de beek zelf heeft gevormd. Een kunstmatige bedding is beton of een ander hard oppervlak dat mensen hebben aangelegd.",
+        "no": "Hva bunnen i bekken består av. En naturlig bunn er grus, sand, stein eller mudder som bekken selv har formet. En kunstig bunn er betong eller et annet hardt dekke som mennesker har lagt."
       },
       "photo_hint": {
         "en": "Look at the bottom where the water is shallow or clear."
@@ -275,7 +399,11 @@
           "code": "NAT",
           "label": {
             "en": "Natural",
-            "pt": "Natural"
+            "pt": "Natural",
+            "it": "Naturale",
+            "fr": "Naturel",
+            "nl": "Natuurlijk",
+            "no": "Naturlig"
           },
           "explain": {
             "en": "Gravel, sand, stones, silt or mud - material the stream itself moves and sorts."
@@ -287,7 +415,11 @@
           "code": "ART",
           "label": {
             "en": "Artificial",
-            "pt": "Artificial"
+            "pt": "Artificial",
+            "it": "Artificiale",
+            "fr": "Artificiel",
+            "nl": "Kunstmatig",
+            "no": "Kunstig"
           },
           "explain": {
             "en": "Concrete, brick or another hard engineered surface."
@@ -299,7 +431,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this if the water is too deep, too cloudy or too shaded to see the bottom."
@@ -318,11 +454,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Bank type",
-        "pt": "Tipo de margem"
+        "pt": "Tipo de margem",
+        "it": "Tipo di sponda",
+        "fr": "Type de berge",
+        "nl": "Type oever",
+        "no": "Type bredd"
       },
       "explain": {
         "en": "What the sides of the channel are made of. Answer for the HARDEST material you can see on the bank: if any part of it has been armoured with concrete or stone, answer for that, even where the rest is bare earth. Natural banks are soil and plant roots held together by vegetation.",
-        "pt": "De que são feitas as margens. Responda pelo material MAIS DURO que consegue ver: se alguma parte foi revestida com betão ou pedra, responda por essa, mesmo que o resto seja terra."
+        "pt": "De que são feitas as margens. Responda pelo material MAIS DURO que consegue ver: se alguma parte foi revestida com betão ou pedra, responda por essa, mesmo que o resto seja terra.",
+        "it": "Di cosa sono fatti i fianchi dell'alveo. Rispondi per il materiale PIÙ DURO che vedi sulla sponda: se una parte è stata rivestita con cemento o pietra, rispondi per quello, anche dove il resto è terra nuda. Le sponde naturali sono terreno e radici tenuti insieme dalla vegetazione.",
+        "fr": "Ce qui constitue les côtés du chenal. Répondez pour le matériau LE PLUS DUR visible sur la berge : si une partie a été renforcée avec du béton ou de la pierre, répondez pour cela, même si le reste est en terre nue. Les berges naturelles sont faites de terre et de racines maintenues par la végétation.",
+        "nl": "Waar de zijkanten van de bedding uit bestaan. Antwoord voor het HARDSTE materiaal dat je op de oever ziet: als een deel is versterkt met beton of steen, antwoord dan daarvoor, ook waar de rest kale aarde is. Natuurlijke oevers bestaan uit grond en plantenwortels die door begroeiing bijeen worden gehouden.",
+        "no": "Hva sidene av elveløpet består av. Svar for det HARDESTE materialet du ser på bredden: er en del forsterket med betong eller stein, svarer du for det, også der resten er bar jord. Naturlige bredder er jord og planterøtter som holdes sammen av vegetasjon."
       },
       "photo_hint": {
         "en": "Look at the strip between the water's edge and the top of the bank. If part is armoured and part is bare earth, answer for the armoured part."
@@ -335,7 +479,11 @@
           "code": "NAT",
           "label": {
             "en": "Natural",
-            "pt": "Natural"
+            "pt": "Natural",
+            "it": "Naturale",
+            "fr": "Naturel",
+            "nl": "Natuurlijk",
+            "no": "Naturlig"
           },
           "explain": {
             "en": "Earth, sediment and plant roots holding the bank together, with no concrete or placed stone anywhere on it."
@@ -347,7 +495,11 @@
           "code": "ART",
           "label": {
             "en": "Concrete",
-            "pt": "Betão"
+            "pt": "Betão",
+            "it": "Cemento",
+            "fr": "Béton",
+            "nl": "Beton",
+            "no": "Betong"
           },
           "explain": {
             "en": "A poured or rendered concrete wall, sheet piling, or any hard engineered facing - even if it covers only part of the bank."
@@ -359,7 +511,11 @@
           "code": "LAS",
           "label": {
             "en": "Laid stones",
-            "pt": "Pedra assente"
+            "pt": "Pedra assente",
+            "it": "Pietre posate",
+            "fr": "Pierres appareillées",
+            "nl": "Gezette stenen",
+            "no": "Lagt stein"
           },
           "explain": {
             "en": "Stones or blocks placed by people - rip-rap, gabions or a stone wall."
@@ -371,7 +527,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this if vegetation hides the bank surface."
@@ -390,11 +550,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Instream habitats",
-        "pt": "Habitats dentro de água"
+        "pt": "Habitats dentro de água",
+        "it": "Habitat in alveo",
+        "fr": "Habitats dans le cours d'eau",
+        "nl": "Habitats in het water",
+        "no": "Habitater i bekken"
       },
       "explain": {
         "en": "Features inside the water that give small animals places to live, feed and hide. More variety usually means more life.",
-        "pt": "Estruturas dentro de água que dão abrigo e alimento a pequenos animais."
+        "pt": "Estruturas dentro de água que dão abrigo e alimento a pequenos animais.",
+        "it": "Elementi dentro l'acqua che offrono ai piccoli animali luoghi dove vivere, nutrirsi e nascondersi. Più varietà significa di solito più vita.",
+        "fr": "Éléments présents dans l'eau qui offrent aux petits animaux des endroits où vivre, se nourrir et se cacher. Plus il y a de variété, plus il y a de vie, en général.",
+        "nl": "Elementen in het water die kleine dieren plekken geven om te leven, te eten en zich te verschuilen. Meer variatie betekent meestal meer leven.",
+        "no": "Elementer i vannet som gir små dyr steder å leve, spise og gjemme seg. Mer variasjon betyr som regel mer liv."
       },
       "photo_hint": {
         "en": "Scan the whole water surface, edge to edge."
@@ -408,7 +576,11 @@
           "code": "SB",
           "label": {
             "en": "Sand banks",
-            "pt": "Bancos de areia"
+            "pt": "Bancos de areia",
+            "it": "Banchi di sabbia",
+            "fr": "Bancs de sable",
+            "nl": "Zandbanken",
+            "no": "Sandbanker"
           },
           "explain": {
             "en": "A build-up of sand along the edge or inside the channel."
@@ -420,7 +592,11 @@
           "code": "SI",
           "label": {
             "en": "Sand islands",
-            "pt": "Ilhas de areia"
+            "pt": "Ilhas de areia",
+            "it": "Isole di sabbia",
+            "fr": "Îlots de sable",
+            "nl": "Zandeilanden",
+            "no": "Sandøyer"
           },
           "explain": {
             "en": "A patch of sand or sediment standing above the water with flow on both sides."
@@ -432,7 +608,11 @@
           "code": "SD",
           "label": {
             "en": "Stone deposits",
-            "pt": "Depósitos de pedras"
+            "pt": "Depósitos de pedras",
+            "it": "Depositi di pietre",
+            "fr": "Dépôts de pierres",
+            "nl": "Steenafzettingen",
+            "no": "Steinavsetninger"
           },
           "explain": {
             "en": "Loose stones and gravel gathered on the bed."
@@ -444,7 +624,11 @@
           "code": "RF",
           "label": {
             "en": "Riffles, rapids or small falls",
-            "pt": "Rápidos ou pequenas quedas"
+            "pt": "Rápidos ou pequenas quedas",
+            "it": "Raschi, rapide o piccole cascate",
+            "fr": "Radiers, rapides ou petites chutes",
+            "nl": "Stroomversnellingen, snelstromende stukken of kleine watervallen",
+            "no": "Stryk, raske partier eller små fosser"
           },
           "explain": {
             "en": "Shallow fast stretches where water breaks over stones and looks broken and white. These mix air into the water."
@@ -456,7 +640,11 @@
           "code": "AV",
           "label": {
             "en": "Plants growing in the water",
-            "pt": "Plantas dentro de água"
+            "pt": "Plantas dentro de água",
+            "it": "Piante che crescono nell'acqua",
+            "fr": "Plantes poussant dans l'eau",
+            "nl": "Planten die in het water groeien",
+            "no": "Planter som vokser i vannet"
           },
           "explain": {
             "en": "Rooted or floating plants living in the channel itself."
@@ -468,7 +656,11 @@
           "code": "NONE",
           "label": {
             "en": "None of these",
-            "pt": "Nenhum destes"
+            "pt": "Nenhum destes",
+            "it": "Nessuno di questi",
+            "fr": "Aucun de ceux-ci",
+            "nl": "Geen van deze",
+            "no": "Ingen av disse"
           },
           "explain": {
             "en": "The channel is uniform, with none of these features visible."
@@ -487,11 +679,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Natural debris",
-        "pt": "Detritos naturais"
+        "pt": "Detritos naturais",
+        "it": "Detriti naturali",
+        "fr": "Débris naturels",
+        "nl": "Natuurlijk materiaal",
+        "no": "Naturlig materiale"
       },
       "explain": {
         "en": "Wood and leaves that fell into the stream naturally. This is not litter - it is food and shelter for stream life, and it slows the water down.",
-        "pt": "Madeira e folhas caídas naturalmente no ribeiro. Não é lixo: é alimento e abrigo."
+        "pt": "Madeira e folhas caídas naturalmente no ribeiro. Não é lixo: é alimento e abrigo.",
+        "it": "Legno e foglie caduti nel corso d'acqua in modo naturale. Non sono rifiuti: sono cibo e riparo per la vita del corso d'acqua e rallentano l'acqua.",
+        "fr": "Bois et feuilles tombés naturellement dans le cours d'eau. Ce ne sont pas des déchets : c'est de la nourriture et un abri pour la vie aquatique, et cela ralentit l'eau.",
+        "nl": "Hout en bladeren die op natuurlijke wijze in de beek zijn gevallen. Dit is geen zwerfvuil: het is voedsel en schuilplaats voor het beekleven en het remt het water af.",
+        "no": "Trevirke og løv som har falt naturlig ned i bekken. Dette er ikke søppel: det er mat og skjul for livet i bekken, og det bremser vannet."
       },
       "photo_hint": {
         "en": "Look for wood caught against stones, bends or bridge supports."
@@ -504,7 +704,11 @@
           "code": "FT",
           "label": {
             "en": "Fallen trees",
-            "pt": "Árvores caídas"
+            "pt": "Árvores caídas",
+            "it": "Alberi caduti",
+            "fr": "Arbres tombés",
+            "nl": "Omgevallen bomen",
+            "no": "Nedfalne trær"
           },
           "explain": {
             "en": "A whole trunk or large tree lying in or across the channel."
@@ -516,7 +720,11 @@
           "code": "FB",
           "label": {
             "en": "Fallen branches",
-            "pt": "Ramos caídos"
+            "pt": "Ramos caídos",
+            "it": "Rami caduti",
+            "fr": "Branches tombées",
+            "nl": "Afgevallen takken",
+            "no": "Nedfalne greiner"
           },
           "explain": {
             "en": "Branches and smaller woody pieces in the water."
@@ -528,7 +736,11 @@
           "code": "FL",
           "label": {
             "en": "Piles of leaves",
-            "pt": "Acumulações de folhas"
+            "pt": "Acumulações de folhas",
+            "it": "Cumuli di foglie",
+            "fr": "Amas de feuilles",
+            "nl": "Bladophopingen",
+            "no": "Løvhauger"
           },
           "explain": {
             "en": "Collected leaf litter caught in the channel."
@@ -540,7 +752,11 @@
           "code": "NONE",
           "label": {
             "en": "None",
-            "pt": "Nenhum"
+            "pt": "Nenhum",
+            "it": "Nessuno",
+            "fr": "Aucun",
+            "nl": "Geen",
+            "no": "Ingen"
           },
           "explain": {
             "en": "No natural wood or leaf material visible in the water."
@@ -559,11 +775,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Flow type",
-        "pt": "Tipo de escoamento"
+        "pt": "Tipo de escoamento",
+        "it": "Tipo di flusso",
+        "fr": "Type d'écoulement",
+        "nl": "Type stroming",
+        "no": "Type vannføring"
       },
       "explain": {
         "en": "How fast the water is moving. Standing or dry channels behave very differently from flowing ones - they warm up faster and hold less oxygen.",
-        "pt": "A velocidade a que a água se move."
+        "pt": "A velocidade a que a água se move.",
+        "it": "Quanto velocemente si muove l'acqua. Gli alvei con acqua ferma o asciutti si comportano in modo molto diverso da quelli con acqua corrente: si scaldano più in fretta e contengono meno ossigeno.",
+        "fr": "À quelle vitesse l'eau se déplace. Les chenaux à eau stagnante ou à sec se comportent très différemment de ceux qui coulent : ils se réchauffent plus vite et contiennent moins d'oxygène.",
+        "nl": "Hoe snel het water stroomt. Stilstaande of droge beddingen gedragen zich heel anders dan stromende: ze warmen sneller op en bevatten minder zuurstof.",
+        "no": "Hvor fort vannet beveger seg. Stillestående eller tørre løp oppfører seg helt annerledes enn rennende: de varmes raskere opp og holder mindre oksygen."
       },
       "photo_hint": {
         "en": "Movement is hard to see in a still photo - answer 'not sure' if unclear."
@@ -576,7 +800,11 @@
           "code": "FAS",
           "label": {
             "en": "Fast, with waves",
-            "pt": "Rápido, com ondulação"
+            "pt": "Rápido, com ondulação",
+            "it": "Veloce, con onde",
+            "fr": "Rapide, avec des vagues",
+            "nl": "Snel, met golven",
+            "no": "Raskt, med bølger"
           },
           "explain": {
             "en": "The surface is broken, rippled or white where it passes obstacles."
@@ -588,7 +816,11 @@
           "code": "NOR",
           "label": {
             "en": "Slow",
-            "pt": "Lento"
+            "pt": "Lento",
+            "it": "Lento",
+            "fr": "Lent",
+            "nl": "Langzaam",
+            "no": "Sakte"
           },
           "explain": {
             "en": "Water is clearly moving but the surface is smooth."
@@ -600,7 +832,11 @@
           "code": "STA",
           "label": {
             "en": "Standing",
-            "pt": "Parada"
+            "pt": "Parada",
+            "it": "Ferma",
+            "fr": "Stagnante",
+            "nl": "Stilstaand",
+            "no": "Stillestående"
           },
           "explain": {
             "en": "Water is present but not moving at all - a pool or a stagnant reach."
@@ -612,7 +848,11 @@
           "code": "DRY",
           "label": {
             "en": "Dry",
-            "pt": "Seco"
+            "pt": "Seco",
+            "it": "Asciutto",
+            "fr": "À sec",
+            "nl": "Droog",
+            "no": "Tørt"
           },
           "explain": {
             "en": "No water in the channel at the time of the visit."
@@ -624,7 +864,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this if a still photo cannot show movement."
@@ -643,11 +887,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Water aspect",
-        "pt": "Aspeto da água"
+        "pt": "Aspeto da água",
+        "it": "Aspetto dell'acqua",
+        "fr": "Aspect de l'eau",
+        "nl": "Uiterlijk van het water",
+        "no": "Vannets utseende"
       },
       "explain": {
         "en": "How the water looks. Colour, cloudiness and foam can point to pollution, erosion or perfectly natural conditions after rain.",
-        "pt": "O aspeto da água: cor, turvação e espuma."
+        "pt": "O aspeto da água: cor, turvação e espuma.",
+        "it": "Come appare l'acqua. Colore, torbidità e schiuma possono indicare inquinamento, erosione oppure condizioni del tutto naturali dopo la pioggia.",
+        "fr": "L'apparence de l'eau. La couleur, la turbidité et la mousse peuvent signaler une pollution, de l'érosion, ou des conditions parfaitement naturelles après la pluie.",
+        "nl": "Hoe het water eruitziet. Kleur, troebelheid en schuim kunnen wijzen op vervuiling, erosie of volkomen natuurlijke omstandigheden na regen.",
+        "no": "Hvordan vannet ser ut. Farge, uklarhet og skum kan tyde på forurensning, erosjon eller helt naturlige forhold etter regn."
       },
       "photo_hint": {
         "en": "Photograph the water at an angle to cut reflections off the surface."
@@ -660,7 +912,11 @@
           "code": "CL",
           "label": {
             "en": "Clear",
-            "pt": "Limpa"
+            "pt": "Limpa",
+            "it": "Limpida",
+            "fr": "Claire",
+            "nl": "Helder",
+            "no": "Klart"
           },
           "explain": {
             "en": "You can see through the water to the bed."
@@ -672,7 +928,11 @@
           "code": "MU",
           "label": {
             "en": "Muddy or cloudy",
-            "pt": "Turva ou lamacenta"
+            "pt": "Turva ou lamacenta",
+            "it": "Fangosa o torbida",
+            "fr": "Boueuse ou trouble",
+            "nl": "Modderig of troebel",
+            "no": "Grumsete eller uklart"
           },
           "explain": {
             "en": "Brown or milky water carrying suspended sediment. Common and often natural after heavy rain."
@@ -684,7 +944,11 @@
           "code": "FO",
           "label": {
             "en": "Foam on the surface",
-            "pt": "Espuma à superfície"
+            "pt": "Espuma à superfície",
+            "it": "Schiuma in superficie",
+            "fr": "Mousse en surface",
+            "nl": "Schuim op het oppervlak",
+            "no": "Skum på overflaten"
           },
           "explain": {
             "en": "White or off-white froth. Natural foam is tan and breaks up easily; persistent bright white foam can point to detergents."
@@ -696,7 +960,11 @@
           "code": "CO",
           "label": {
             "en": "An unusual colour",
-            "pt": "Cor invulgar"
+            "pt": "Cor invulgar",
+            "it": "Un colore insolito",
+            "fr": "Une couleur inhabituelle",
+            "nl": "Een ongewone kleur",
+            "no": "En uvanlig farge"
           },
           "explain": {
             "en": "Green, orange, grey, black or any colour that stands out."
@@ -708,7 +976,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this if glare, shade or reflections hide the water."
@@ -727,11 +999,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Water abstraction",
-        "pt": "Captação de água"
+        "pt": "Captação de água",
+        "it": "Prelievo d'acqua",
+        "fr": "Prélèvement d'eau",
+        "nl": "Wateronttrekking",
+        "no": "Vannuttak"
       },
       "explain": {
         "en": "Signs that water is being taken out of the stream - a pump, a hose, a pipe running from the channel, or a small diversion channel.",
-        "pt": "Sinais de que está a ser retirada água do ribeiro (bombas, mangueiras, desvios)."
+        "pt": "Sinais de que está a ser retirada água do ribeiro (bombas, mangueiras, desvios).",
+        "it": "Segni che l'acqua viene prelevata dal corso d'acqua: una pompa, un tubo flessibile, una condotta che parte dall'alveo o un piccolo canale di derivazione.",
+        "fr": "Des signes que de l'eau est prélevée dans le cours d'eau : une pompe, un tuyau, une conduite partant du chenal, ou un petit canal de dérivation.",
+        "nl": "Aanwijzingen dat er water uit de beek wordt gehaald: een pomp, een slang, een buis vanaf de bedding of een kleine aftakking.",
+        "no": "Tegn på at det tas vann ut av bekken: en pumpe, en slange, et rør fra løpet eller en liten avledningskanal."
       },
       "photo_hint": {},
       "terms": [
@@ -742,7 +1022,11 @@
           "code": "Y",
           "label": {
             "en": "Yes",
-            "pt": "Sim"
+            "pt": "Sim",
+            "it": "Sì",
+            "fr": "Oui",
+            "nl": "Ja",
+            "no": "Ja"
           },
           "explain": {
             "en": "A pump, hose, intake or diversion taking water out is visible."
@@ -754,7 +1038,11 @@
           "code": "N",
           "label": {
             "en": "No",
-            "pt": "Não"
+            "pt": "Não",
+            "it": "No",
+            "fr": "Non",
+            "nl": "Nee",
+            "no": "Nei"
           },
           "explain": {
             "en": "No abstraction structure is visible."
@@ -766,7 +1054,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this whenever the photo does not show it clearly. 'Not sure' is a good answer - a guess is not."
@@ -786,11 +1078,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Longitudinal connectivity",
-        "pt": "Conectividade longitudinal"
+        "pt": "Conectividade longitudinal",
+        "it": "Connettività longitudinale",
+        "fr": "Continuité longitudinale",
+        "nl": "Longitudinale connectiviteit",
+        "no": "Langsgående forbindelse"
       },
       "explain": {
         "en": "Whether anything blocks the way along the stream. Weirs, dams, culverts and drops stop fish and other animals moving up and down.",
-        "pt": "Se existe algo que bloqueie o percurso ao longo do ribeiro (açudes, barragens, quedas)."
+        "pt": "Se existe algo que bloqueie o percurso ao longo do ribeiro (açudes, barragens, quedas).",
+        "it": "Se qualcosa ostacola il passaggio lungo il corso d'acqua. Briglie, dighe, tombinature e salti impediscono a pesci e altri animali di spostarsi a monte e a valle.",
+        "fr": "Si quelque chose bloque le passage le long du cours d'eau. Seuils, barrages, buses et chutes empêchent les poissons et les autres animaux de circuler vers l'amont et l'aval.",
+        "nl": "Of iets de weg langs de beek blokkeert. Stuwen, dammen, duikers en vervallen houden vissen en andere dieren tegen bij het trekken.",
+        "no": "Om noe sperrer veien langs bekken. Terskler, dammer, kulverter og fall hindrer fisk og andre dyr i å vandre opp og ned."
       },
       "photo_hint": {},
       "terms": [
@@ -802,7 +1102,11 @@
           "code": "Y",
           "label": {
             "en": "Yes",
-            "pt": "Sim"
+            "pt": "Sim",
+            "it": "Sì",
+            "fr": "Oui",
+            "nl": "Ja",
+            "no": "Ja"
           },
           "explain": {
             "en": "A weir, dam, sluice, culvert or step blocks movement along the channel."
@@ -814,7 +1118,11 @@
           "code": "N",
           "label": {
             "en": "No",
-            "pt": "Não"
+            "pt": "Não",
+            "it": "No",
+            "fr": "Non",
+            "nl": "Nee",
+            "no": "Nei"
           },
           "explain": {
             "en": "The water runs uninterrupted through the whole stretch you can see."
@@ -826,7 +1134,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this whenever the photo does not show it clearly. 'Not sure' is a good answer - a guess is not."
@@ -845,11 +1157,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Polluted outfalls",
-        "pt": "Descargas poluídas"
+        "pt": "Descargas poluídas",
+        "it": "Scarichi inquinati",
+        "fr": "Rejets pollués",
+        "nl": "Vervuilde lozingspunten",
+        "no": "Forurensede utløp"
       },
       "explain": {
         "en": "A pipe discharging into the stream where the water coming out looks or smells wrong - discoloured, foamy, greasy, or stained around the mouth.",
-        "pt": "Tubos que descarregam no ribeiro com aspeto ou cheiro suspeito."
+        "pt": "Tubos que descarregam no ribeiro com aspeto ou cheiro suspeito.",
+        "it": "Un tubo che scarica nel corso d'acqua e la cui acqua ha un aspetto o un odore anomalo: scolorita, schiumosa, oleosa o con macchie intorno alla bocca.",
+        "fr": "Un tuyau se déversant dans le cours d'eau dont l'eau paraît ou sent anormale : décolorée, mousseuse, grasse, ou laissant des traces autour de l'orifice.",
+        "nl": "Een buis die op de beek loost waarbij het uitstromende water er verkeerd uitziet of ruikt: verkleurd, schuimend, vettig of met aanslag rond de monding.",
+        "no": "Et rør som slipper ut i bekken der vannet ser ut eller lukter feil: misfarget, skummende, fettete eller med avleiringer rundt åpningen."
       },
       "photo_hint": {},
       "terms": [
@@ -860,7 +1180,11 @@
           "code": "Y",
           "label": {
             "en": "Yes",
-            "pt": "Sim"
+            "pt": "Sim",
+            "it": "Sì",
+            "fr": "Oui",
+            "nl": "Ja",
+            "no": "Ja"
           },
           "explain": {
             "en": "A pipe is discharging something that looks polluted, or the outfall is stained."
@@ -872,7 +1196,11 @@
           "code": "N",
           "label": {
             "en": "No",
-            "pt": "Não"
+            "pt": "Não",
+            "it": "No",
+            "fr": "Non",
+            "nl": "Nee",
+            "no": "Nei"
           },
           "explain": {
             "en": "No pipe is discharging, or a pipe is present but the water looks clean."
@@ -884,7 +1212,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this whenever the photo does not show it clearly. 'Not sure' is a good answer - a guess is not."
@@ -903,11 +1235,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Sewage discharge",
-        "pt": "Descarga de esgoto"
+        "pt": "Descarga de esgoto",
+        "it": "Scarico di liquami",
+        "fr": "Rejet d'eaux usées",
+        "nl": "Lozing van afvalwater",
+        "no": "Utslipp av kloakk"
       },
       "explain": {
         "en": "Signs of waste water: toilet paper, sanitary items, grey scum, sewage fungus (a white or grey slimy growth), or a strong smell.",
-        "pt": "Sinais de águas residuais: papel, espuma acinzentada, cheiro forte."
+        "pt": "Sinais de águas residuais: papel, espuma acinzentada, cheiro forte.",
+        "it": "Segni di acque reflue: carta igienica, prodotti sanitari, schiuma grigiastra, fungo dei liquami (una patina viscida bianca o grigia) o un odore forte.",
+        "fr": "Des signes d'eaux usées : papier toilette, produits d'hygiène, écume grise, « champignon d'égout » (un dépôt visqueux blanc ou gris), ou une odeur forte.",
+        "nl": "Tekenen van afvalwater: toiletpapier, sanitair afval, grijs schuim, rioolzwam (een witte of grijze slijmlaag) of een sterke geur.",
+        "no": "Tegn på avløpsvann: toalettpapir, sanitærartikler, grått skum, «kloakksopp» (en hvit eller grå slimete begroing) eller sterk lukt."
       },
       "photo_hint": {},
       "terms": [
@@ -918,7 +1258,11 @@
           "code": "Y",
           "label": {
             "en": "Yes",
-            "pt": "Sim"
+            "pt": "Sim",
+            "it": "Sì",
+            "fr": "Oui",
+            "nl": "Ja",
+            "no": "Ja"
           },
           "explain": {
             "en": "Sewage-related material or staining is visible."
@@ -930,7 +1274,11 @@
           "code": "N",
           "label": {
             "en": "No",
-            "pt": "Não"
+            "pt": "Não",
+            "it": "No",
+            "fr": "Non",
+            "nl": "Nee",
+            "no": "Nei"
           },
           "explain": {
             "en": "No sign of waste water."
@@ -942,7 +1290,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this whenever the photo does not show it clearly. 'Not sure' is a good answer - a guess is not."
@@ -961,11 +1313,19 @@
       "source": "manual",
       "label": {
         "en": "Litter",
-        "pt": "Lixo"
+        "pt": "Lixo",
+        "it": "Rifiuti",
+        "fr": "Déchets",
+        "nl": "Zwerfvuil",
+        "no": "Søppel"
       },
       "explain": {
         "en": "Rubbish people have dropped or dumped - bottles, cans, bags, wrappers, trolleys, tyres. This is not the same as natural debris: wood and leaves belong in a stream, litter does not.",
-        "pt": "Lixo deixado por pessoas: garrafas, latas, sacos, embalagens. Nao confundir com detritos naturais (madeira e folhas), que fazem parte do ribeiro."
+        "pt": "Lixo deixado por pessoas: garrafas, latas, sacos, embalagens. Nao confundir com detritos naturais (madeira e folhas), que fazem parte do ribeiro.",
+        "it": "Rifiuti lasciati o abbandonati dalle persone: bottiglie, lattine, sacchetti, incarti, carrelli, pneumatici. Non è la stessa cosa dei detriti naturali: legno e foglie fanno parte del corso d'acqua, i rifiuti no.",
+        "fr": "Des déchets jetés ou abandonnés : bouteilles, canettes, sacs, emballages, caddies, pneus. Ce n'est pas la même chose que les débris naturels : le bois et les feuilles ont leur place dans un cours d'eau, pas les déchets.",
+        "nl": "Afval dat mensen hebben laten vallen of gedumpt: flessen, blikjes, zakken, verpakkingen, winkelwagens, banden. Dit is niet hetzelfde als natuurlijk materiaal: hout en bladeren horen in een beek thuis, zwerfvuil niet.",
+        "no": "Søppel folk har mistet eller dumpet: flasker, bokser, poser, emballasje, handlevogner, dekk. Dette er ikke det samme som naturlig materiale: trevirke og løv hører hjemme i bekken, søppel gjør det ikke."
       },
       "photo_hint": {
         "en": "Look at the water's edge and where the current pushes things - against stones, bends and bridge supports."
@@ -978,7 +1338,11 @@
           "code": "NONE",
           "label": {
             "en": "None that I can see",
-            "pt": "Nenhum que eu veja"
+            "pt": "Nenhum que eu veja",
+            "it": "Nessuno visibile",
+            "fr": "Aucun visible",
+            "nl": "Geen die ik kan zien",
+            "no": "Ingen jeg kan se"
           },
           "explain": {
             "en": "You looked along the channel and the banks and saw no dropped rubbish."
@@ -990,7 +1354,11 @@
           "code": "SOME",
           "label": {
             "en": "A little",
-            "pt": "Algum"
+            "pt": "Algum",
+            "it": "Pochi",
+            "fr": "Un peu",
+            "nl": "Een beetje",
+            "no": "Litt"
           },
           "explain": {
             "en": "A few items - the odd bottle, can or bag."
@@ -1002,7 +1370,11 @@
           "code": "LOTS",
           "label": {
             "en": "A lot",
-            "pt": "Muito"
+            "pt": "Muito",
+            "it": "Molti",
+            "fr": "Beaucoup",
+            "nl": "Veel",
+            "no": "Mye"
           },
           "explain": {
             "en": "Rubbish is a conspicuous feature here: many items, or large dumped objects such as a trolley or a tyre."
@@ -1014,7 +1386,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Nao tenho a certeza"
+            "pt": "Nao tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this whenever the photo does not show it clearly. 'Not sure' is a good answer - a guess is not."
@@ -1033,11 +1409,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Channel works",
-        "pt": "Obras no canal"
+        "pt": "Obras no canal",
+        "it": "Lavori in alveo",
+        "fr": "Travaux dans le chenal",
+        "nl": "Werkzaamheden aan de bedding",
+        "no": "Arbeider i elveløpet"
       },
       "explain": {
         "en": "Building or engineering work in or right beside the channel - machinery, fresh concrete, dredging, bare disturbed earth or site fencing.",
-        "pt": "Obras dentro ou junto ao canal: máquinas, betão fresco, dragagens."
+        "pt": "Obras dentro ou junto ao canal: máquinas, betão fresco, dragagens.",
+        "it": "Lavori edili o di ingegneria dentro o subito accanto all'alveo: macchinari, cemento fresco, dragaggi, terra nuda smossa o recinzioni di cantiere.",
+        "fr": "Des travaux de construction ou de génie civil dans le chenal ou juste à côté : engins, béton frais, dragage, terre nue remuée ou clôtures de chantier.",
+        "nl": "Bouw- of civieltechnische werkzaamheden in of vlak naast de bedding: machines, vers beton, baggerwerk, kale omgewoelde grond of bouwhekken.",
+        "no": "Bygge- eller anleggsarbeid i eller like ved løpet: maskiner, fersk betong, mudring, bar oppgravd jord eller anleggsgjerder."
       },
       "photo_hint": {},
       "terms": [],
@@ -1046,7 +1430,11 @@
           "code": "Y",
           "label": {
             "en": "Yes",
-            "pt": "Sim"
+            "pt": "Sim",
+            "it": "Sì",
+            "fr": "Oui",
+            "nl": "Ja",
+            "no": "Ja"
           },
           "explain": {
             "en": "Active or very recent works are visible in or beside the channel."
@@ -1058,7 +1446,11 @@
           "code": "N",
           "label": {
             "en": "No",
-            "pt": "Não"
+            "pt": "Não",
+            "it": "No",
+            "fr": "Non",
+            "nl": "Nee",
+            "no": "Nei"
           },
           "explain": {
             "en": "No works visible."
@@ -1070,7 +1462,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this whenever the photo does not show it clearly. 'Not sure' is a good answer - a guess is not."
@@ -1089,11 +1485,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Impervious surface, left bank",
-        "pt": "Superfície impermeável, margem esquerda"
+        "pt": "Superfície impermeável, margem esquerda",
+        "it": "Superficie impermeabile, sponda sinistra",
+        "fr": "Surface imperméable, rive gauche",
+        "nl": "Verhard oppervlak, linkeroever",
+        "no": "Tette flater, venstre bredd"
       },
       "explain": {
         "en": "Sealed ground next to the stream - tarmac, concrete, paving or buildings - that rain cannot soak into. It sends rain straight into the stream, carrying whatever was lying on the surface.",
-        "pt": "Solo selado junto ao ribeiro (alcatrão, betão, pavimento) onde a chuva não se infiltra."
+        "pt": "Solo selado junto ao ribeiro (alcatrão, betão, pavimento) onde a chuva não se infiltra.",
+        "it": "Terreno sigillato accanto al corso d'acqua - asfalto, cemento, pavimentazione o edifici - in cui la pioggia non può penetrare. Convoglia la pioggia direttamente nel corso d'acqua, portando con sé tutto ciò che si trovava in superficie.",
+        "fr": "Sol imperméabilisé à côté du cours d'eau - bitume, béton, pavage ou bâtiments - dans lequel la pluie ne peut pas s'infiltrer. Il envoie la pluie directement dans le cours d'eau, avec tout ce qui traînait en surface.",
+        "nl": "Verharde grond naast de beek - asfalt, beton, bestrating of gebouwen - waarin regen niet kan wegzakken. Het stuurt regen rechtstreeks de beek in, met alles wat op het oppervlak lag.",
+        "no": "Tett grunn ved siden av bekken - asfalt, betong, belegningsstein eller bygninger - som regnet ikke trenger ned i. Det sender regnet rett ut i bekken, med alt som lå på overflaten."
       },
       "photo_hint": {
         "en": "Left and right are defined looking DOWNSTREAM - the way the water is going."
@@ -1107,7 +1511,11 @@
           "code": "Y",
           "label": {
             "en": "Yes",
-            "pt": "Sim"
+            "pt": "Sim",
+            "it": "Sì",
+            "fr": "Oui",
+            "nl": "Ja",
+            "no": "Ja"
           },
           "explain": {
             "en": "Paving, tarmac, concrete or buildings run up close to the bank."
@@ -1119,7 +1527,11 @@
           "code": "N",
           "label": {
             "en": "No",
-            "pt": "Não"
+            "pt": "Não",
+            "it": "No",
+            "fr": "Non",
+            "nl": "Nee",
+            "no": "Nei"
           },
           "explain": {
             "en": "The ground beside the stream is soil, grass or another surface rain can soak into."
@@ -1131,7 +1543,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this whenever the photo does not show it clearly. 'Not sure' is a good answer - a guess is not."
@@ -1150,11 +1566,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Riparian vegetation cover, left bank",
-        "pt": "Cobertura vegetal ripária, margem esquerda"
+        "pt": "Cobertura vegetal ripária, margem esquerda",
+        "it": "Copertura vegetale ripariale, sponda sinistra",
+        "fr": "Couverture végétale de la ripisylve, rive gauche",
+        "nl": "Oeverbegroeiing, linkeroever",
+        "no": "Kantvegetasjon, venstre bredd"
       },
       "explain": {
         "en": "Whether plants cover the strip of land along the bank. That strip shades the water, holds the bank together and filters what runs off the land.",
-        "pt": "Se existem plantas na faixa de terreno ao longo da margem."
+        "pt": "Se existem plantas na faixa de terreno ao longo da margem.",
+        "it": "Se le piante coprono la fascia di terreno lungo la sponda. Quella fascia ombreggia l'acqua, tiene insieme la sponda e filtra ciò che dilava dal terreno.",
+        "fr": "Si la végétation couvre la bande de terre le long de la berge. Cette bande ombrage l'eau, maintient la berge et filtre ce qui ruisselle depuis les terrains.",
+        "nl": "Of planten de strook land langs de oever bedekken. Die strook geeft schaduw op het water, houdt de oever bijeen en filtert wat van het land afstroomt.",
+        "no": "Om planter dekker stripen med land langs bredden. Den stripen gir skygge på vannet, holder bredden sammen og filtrerer det som renner av fra landet."
       },
       "photo_hint": {
         "en": "Left and right are defined looking DOWNSTREAM - the way the water is going."
@@ -1167,7 +1591,11 @@
           "code": "Y",
           "label": {
             "en": "Yes",
-            "pt": "Sim"
+            "pt": "Sim",
+            "it": "Sì",
+            "fr": "Oui",
+            "nl": "Ja",
+            "no": "Ja"
           },
           "explain": {
             "en": "Plants cover most of the bank strip."
@@ -1179,7 +1607,11 @@
           "code": "N",
           "label": {
             "en": "No",
-            "pt": "Não"
+            "pt": "Não",
+            "it": "No",
+            "fr": "Non",
+            "nl": "Nee",
+            "no": "Nei"
           },
           "explain": {
             "en": "The bank strip is mostly bare, paved, or mown to nothing."
@@ -1191,7 +1623,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this whenever the photo does not show it clearly. 'Not sure' is a good answer - a guess is not."
@@ -1210,11 +1646,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Dominant vegetation, left bank",
-        "pt": "Vegetação dominante, margem esquerda"
+        "pt": "Vegetação dominante, margem esquerda",
+        "it": "Vegetazione dominante, sponda sinistra",
+        "fr": "Végétation dominante, rive gauche",
+        "nl": "Dominante begroeiing, linkeroever",
+        "no": "Dominerende vegetasjon, venstre bredd"
       },
       "explain": {
         "en": "Which kind of plant takes up the most space along the bank. Trees shade and cool the water; grass alone gives much less shelter.",
-        "pt": "Que tipo de planta ocupa mais espaço ao longo da margem."
+        "pt": "Que tipo de planta ocupa mais espaço ao longo da margem.",
+        "it": "Quale tipo di pianta occupa più spazio lungo la sponda. Gli alberi ombreggiano e raffrescano l'acqua; la sola erba offre molto meno riparo.",
+        "fr": "Quel type de végétation occupe le plus d'espace le long de la berge. Les arbres ombragent et rafraîchissent l'eau ; l'herbe seule offre bien moins d'abri.",
+        "nl": "Welk type plant de meeste ruimte inneemt langs de oever. Bomen geven schaduw en koelen het water; alleen gras biedt veel minder beschutting.",
+        "no": "Hvilken plantetype som tar mest plass langs bredden. Trær gir skygge og kjøler vannet; gress alene gir langt mindre ly."
       },
       "photo_hint": {
         "en": "Left and right are defined looking DOWNSTREAM - the way the water is going."
@@ -1227,7 +1671,11 @@
           "code": "H",
           "label": {
             "en": "Grass and herbs",
-            "pt": "Ervas e herbáceas"
+            "pt": "Ervas e herbáceas",
+            "it": "Erba ed erbacee",
+            "fr": "Herbes et plantes basses",
+            "nl": "Gras en kruiden",
+            "no": "Gress og urter"
           },
           "explain": {
             "en": "Low, soft, non-woody plants."
@@ -1239,7 +1687,11 @@
           "code": "B",
           "label": {
             "en": "Shrubs",
-            "pt": "Arbustos"
+            "pt": "Arbustos",
+            "it": "Arbusti",
+            "fr": "Arbustes",
+            "nl": "Struiken",
+            "no": "Busker"
           },
           "explain": {
             "en": "Woody plants below roughly head height."
@@ -1251,7 +1703,11 @@
           "code": "T",
           "label": {
             "en": "Trees",
-            "pt": "Árvores"
+            "pt": "Árvores",
+            "it": "Alberi",
+            "fr": "Arbres",
+            "nl": "Bomen",
+            "no": "Trær"
           },
           "explain": {
             "en": "Woody plants with a trunk, taller than a person."
@@ -1263,7 +1719,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this if no plant type clearly dominates, or the bank is out of frame."
@@ -1282,11 +1742,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Invasive species, left bank",
-        "pt": "Espécies invasoras, margem esquerda"
+        "pt": "Espécies invasoras, margem esquerda",
+        "it": "Specie invasive, sponda sinistra",
+        "fr": "Espèces envahissantes, rive gauche",
+        "nl": "Invasieve soorten, linkeroever",
+        "no": "Fremmede arter, venstre bredd"
       },
       "explain": {
         "en": "Plants brought from elsewhere that spread fast and crowd out local ones - for example giant reed, Japanese knotweed, acacia or pampas grass. Only answer yes if you actually recognise one.",
-        "pt": "Plantas exóticas que se espalham e substituem as nativas (cana, acácia, erva-das-pampas)."
+        "pt": "Plantas exóticas que se espalham e substituem as nativas (cana, acácia, erva-das-pampas).",
+        "it": "Piante portate da altrove che si diffondono rapidamente e soffocano quelle locali: per esempio canna comune, poligono del Giappone, acacia o erba della pampa. Rispondi sì solo se ne riconosci davvero una.",
+        "fr": "Des plantes venues d'ailleurs qui se propagent vite et étouffent les espèces locales : par exemple la canne de Provence, la renouée du Japon, l'acacia ou l'herbe de la pampa. Ne répondez oui que si vous en reconnaissez réellement une.",
+        "nl": "Planten van elders die zich snel verspreiden en inheemse soorten verdringen - bijvoorbeeld reuzenriet, Japanse duizendknoop, acacia of pampasgras. Antwoord alleen ja als je er echt een herkent.",
+        "no": "Planter hentet fra andre steder som sprer seg raskt og fortrenger de stedegne - for eksempel kjemperør (Arundo donax), parkslirekne, akasie eller pampasgress. Svar ja bare hvis du faktisk kjenner igjen en av dem."
       },
       "photo_hint": {
         "en": "Left and right are defined looking DOWNSTREAM - the way the water is going."
@@ -1299,7 +1767,11 @@
           "code": "Y",
           "label": {
             "en": "Yes",
-            "pt": "Sim"
+            "pt": "Sim",
+            "it": "Sì",
+            "fr": "Oui",
+            "nl": "Ja",
+            "no": "Ja"
           },
           "explain": {
             "en": "You recognise an invasive species on this bank."
@@ -1311,7 +1783,11 @@
           "code": "N",
           "label": {
             "en": "No",
-            "pt": "Não"
+            "pt": "Não",
+            "it": "No",
+            "fr": "Non",
+            "nl": "Nee",
+            "no": "Nei"
           },
           "explain": {
             "en": "You looked and recognised none."
@@ -1323,7 +1799,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this whenever the photo does not show it clearly. 'Not sure' is a good answer - a guess is not."
@@ -1343,11 +1823,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Vegetation management, left bank",
-        "pt": "Gestão da vegetação, margem esquerda"
+        "pt": "Gestão da vegetação, margem esquerda",
+        "it": "Gestione della vegetazione, sponda sinistra",
+        "fr": "Entretien de la végétation, rive gauche",
+        "nl": "Vegetatiebeheer, linkeroever",
+        "no": "Skjøtsel av vegetasjon, venstre bredd"
       },
       "explain": {
         "en": "Signs that plants have been cut, mown or cleared recently - stumps, cut stems, mown strips or piles of cuttings.",
-        "pt": "Sinais de corte recente da vegetação: cepos, faixas cortadas, restos amontoados."
+        "pt": "Sinais de corte recente da vegetação: cepos, faixas cortadas, restos amontoados.",
+        "it": "Segni che le piante sono state tagliate, falciate o rimosse di recente: ceppi, steli recisi, strisce falciate o cumuli di sfalci.",
+        "fr": "Des signes que la végétation a été coupée, fauchée ou débroussaillée récemment : souches, tiges coupées, bandes fauchées ou tas de coupes.",
+        "nl": "Tekenen dat planten onlangs zijn gesnoeid, gemaaid of verwijderd: stronken, afgesneden stengels, gemaaide stroken of hopen maaisel.",
+        "no": "Tegn på at vegetasjon nylig er kuttet, slått eller ryddet: stubber, avkuttede stengler, slåtte striper eller hauger med avklipp."
       },
       "photo_hint": {
         "en": "Left and right are defined looking DOWNSTREAM - the way the water is going."
@@ -1358,7 +1846,11 @@
           "code": "Y",
           "label": {
             "en": "Yes",
-            "pt": "Sim"
+            "pt": "Sim",
+            "it": "Sì",
+            "fr": "Oui",
+            "nl": "Ja",
+            "no": "Ja"
           },
           "explain": {
             "en": "Recent cutting, mowing or clearing is visible."
@@ -1370,7 +1862,11 @@
           "code": "N",
           "label": {
             "en": "No",
-            "pt": "Não"
+            "pt": "Não",
+            "it": "No",
+            "fr": "Non",
+            "nl": "Nee",
+            "no": "Nei"
           },
           "explain": {
             "en": "The vegetation looks unmanaged."
@@ -1382,7 +1878,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this whenever the photo does not show it clearly. 'Not sure' is a good answer - a guess is not."
@@ -1402,11 +1902,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Impervious surface, right bank",
-        "pt": "Superfície impermeável, margem direita"
+        "pt": "Superfície impermeável, margem direita",
+        "it": "Superficie impermeabile, sponda destra",
+        "fr": "Surface imperméable, rive droite",
+        "nl": "Verhard oppervlak, rechteroever",
+        "no": "Tette flater, høyre bredd"
       },
       "explain": {
         "en": "Sealed ground next to the stream - tarmac, concrete, paving or buildings - that rain cannot soak into. It sends rain straight into the stream, carrying whatever was lying on the surface.",
-        "pt": "Solo selado junto ao ribeiro (alcatrão, betão, pavimento) onde a chuva não se infiltra."
+        "pt": "Solo selado junto ao ribeiro (alcatrão, betão, pavimento) onde a chuva não se infiltra.",
+        "it": "Terreno sigillato accanto al corso d'acqua - asfalto, cemento, pavimentazione o edifici - in cui la pioggia non può penetrare. Convoglia la pioggia direttamente nel corso d'acqua, portando con sé tutto ciò che si trovava in superficie.",
+        "fr": "Sol imperméabilisé à côté du cours d'eau - bitume, béton, pavage ou bâtiments - dans lequel la pluie ne peut pas s'infiltrer. Il envoie la pluie directement dans le cours d'eau, avec tout ce qui traînait en surface.",
+        "nl": "Verharde grond naast de beek - asfalt, beton, bestrating of gebouwen - waarin regen niet kan wegzakken. Het stuurt regen rechtstreeks de beek in, met alles wat op het oppervlak lag.",
+        "no": "Tett grunn ved siden av bekken - asfalt, betong, belegningsstein eller bygninger - som regnet ikke trenger ned i. Det sender regnet rett ut i bekken, med alt som lå på overflaten."
       },
       "photo_hint": {
         "en": "Left and right are defined looking DOWNSTREAM - the way the water is going."
@@ -1420,7 +1928,11 @@
           "code": "Y",
           "label": {
             "en": "Yes",
-            "pt": "Sim"
+            "pt": "Sim",
+            "it": "Sì",
+            "fr": "Oui",
+            "nl": "Ja",
+            "no": "Ja"
           },
           "explain": {
             "en": "Paving, tarmac, concrete or buildings run up close to the bank."
@@ -1432,7 +1944,11 @@
           "code": "N",
           "label": {
             "en": "No",
-            "pt": "Não"
+            "pt": "Não",
+            "it": "No",
+            "fr": "Non",
+            "nl": "Nee",
+            "no": "Nei"
           },
           "explain": {
             "en": "The ground beside the stream is soil, grass or another surface rain can soak into."
@@ -1444,7 +1960,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this whenever the photo does not show it clearly. 'Not sure' is a good answer - a guess is not."
@@ -1463,11 +1983,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Riparian vegetation cover, right bank",
-        "pt": "Cobertura vegetal ripária, margem direita"
+        "pt": "Cobertura vegetal ripária, margem direita",
+        "it": "Copertura vegetale ripariale, sponda destra",
+        "fr": "Couverture végétale de la ripisylve, rive droite",
+        "nl": "Oeverbegroeiing, rechteroever",
+        "no": "Kantvegetasjon, høyre bredd"
       },
       "explain": {
         "en": "Whether plants cover the strip of land along the bank. That strip shades the water, holds the bank together and filters what runs off the land.",
-        "pt": "Se existem plantas na faixa de terreno ao longo da margem."
+        "pt": "Se existem plantas na faixa de terreno ao longo da margem.",
+        "it": "Se le piante coprono la fascia di terreno lungo la sponda. Quella fascia ombreggia l'acqua, tiene insieme la sponda e filtra ciò che dilava dal terreno.",
+        "fr": "Si la végétation couvre la bande de terre le long de la berge. Cette bande ombrage l'eau, maintient la berge et filtre ce qui ruisselle depuis les terrains.",
+        "nl": "Of planten de strook land langs de oever bedekken. Die strook geeft schaduw op het water, houdt de oever bijeen en filtert wat van het land afstroomt.",
+        "no": "Om planter dekker stripen med land langs bredden. Den stripen gir skygge på vannet, holder bredden sammen og filtrerer det som renner av fra landet."
       },
       "photo_hint": {
         "en": "Left and right are defined looking DOWNSTREAM - the way the water is going."
@@ -1480,7 +2008,11 @@
           "code": "Y",
           "label": {
             "en": "Yes",
-            "pt": "Sim"
+            "pt": "Sim",
+            "it": "Sì",
+            "fr": "Oui",
+            "nl": "Ja",
+            "no": "Ja"
           },
           "explain": {
             "en": "Plants cover most of the bank strip."
@@ -1492,7 +2024,11 @@
           "code": "N",
           "label": {
             "en": "No",
-            "pt": "Não"
+            "pt": "Não",
+            "it": "No",
+            "fr": "Non",
+            "nl": "Nee",
+            "no": "Nei"
           },
           "explain": {
             "en": "The bank strip is mostly bare, paved, or mown to nothing."
@@ -1504,7 +2040,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this whenever the photo does not show it clearly. 'Not sure' is a good answer - a guess is not."
@@ -1523,11 +2063,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Dominant vegetation, right bank",
-        "pt": "Vegetação dominante, margem direita"
+        "pt": "Vegetação dominante, margem direita",
+        "it": "Vegetazione dominante, sponda destra",
+        "fr": "Végétation dominante, rive droite",
+        "nl": "Dominante begroeiing, rechteroever",
+        "no": "Dominerende vegetasjon, høyre bredd"
       },
       "explain": {
         "en": "Which kind of plant takes up the most space along the bank. Trees shade and cool the water; grass alone gives much less shelter.",
-        "pt": "Que tipo de planta ocupa mais espaço ao longo da margem."
+        "pt": "Que tipo de planta ocupa mais espaço ao longo da margem.",
+        "it": "Quale tipo di pianta occupa più spazio lungo la sponda. Gli alberi ombreggiano e raffrescano l'acqua; la sola erba offre molto meno riparo.",
+        "fr": "Quel type de végétation occupe le plus d'espace le long de la berge. Les arbres ombragent et rafraîchissent l'eau ; l'herbe seule offre bien moins d'abri.",
+        "nl": "Welk type plant de meeste ruimte inneemt langs de oever. Bomen geven schaduw en koelen het water; alleen gras biedt veel minder beschutting.",
+        "no": "Hvilken plantetype som tar mest plass langs bredden. Trær gir skygge og kjøler vannet; gress alene gir langt mindre ly."
       },
       "photo_hint": {
         "en": "Left and right are defined looking DOWNSTREAM - the way the water is going."
@@ -1540,7 +2088,11 @@
           "code": "H",
           "label": {
             "en": "Grass and herbs",
-            "pt": "Ervas e herbáceas"
+            "pt": "Ervas e herbáceas",
+            "it": "Erba ed erbacee",
+            "fr": "Herbes et plantes basses",
+            "nl": "Gras en kruiden",
+            "no": "Gress og urter"
           },
           "explain": {
             "en": "Low, soft, non-woody plants."
@@ -1552,7 +2104,11 @@
           "code": "B",
           "label": {
             "en": "Shrubs",
-            "pt": "Arbustos"
+            "pt": "Arbustos",
+            "it": "Arbusti",
+            "fr": "Arbustes",
+            "nl": "Struiken",
+            "no": "Busker"
           },
           "explain": {
             "en": "Woody plants below roughly head height."
@@ -1564,7 +2120,11 @@
           "code": "T",
           "label": {
             "en": "Trees",
-            "pt": "Árvores"
+            "pt": "Árvores",
+            "it": "Alberi",
+            "fr": "Arbres",
+            "nl": "Bomen",
+            "no": "Trær"
           },
           "explain": {
             "en": "Woody plants with a trunk, taller than a person."
@@ -1576,7 +2136,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this if no plant type clearly dominates, or the bank is out of frame."
@@ -1595,11 +2159,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Invasive species, right bank",
-        "pt": "Espécies invasoras, margem direita"
+        "pt": "Espécies invasoras, margem direita",
+        "it": "Specie invasive, sponda destra",
+        "fr": "Espèces envahissantes, rive droite",
+        "nl": "Invasieve soorten, rechteroever",
+        "no": "Fremmede arter, høyre bredd"
       },
       "explain": {
         "en": "Plants brought from elsewhere that spread fast and crowd out local ones - for example giant reed, Japanese knotweed, acacia or pampas grass. Only answer yes if you actually recognise one.",
-        "pt": "Plantas exóticas que se espalham e substituem as nativas (cana, acácia, erva-das-pampas)."
+        "pt": "Plantas exóticas que se espalham e substituem as nativas (cana, acácia, erva-das-pampas).",
+        "it": "Piante portate da altrove che si diffondono rapidamente e soffocano quelle locali: per esempio canna comune, poligono del Giappone, acacia o erba della pampa. Rispondi sì solo se ne riconosci davvero una.",
+        "fr": "Des plantes venues d'ailleurs qui se propagent vite et étouffent les espèces locales : par exemple la canne de Provence, la renouée du Japon, l'acacia ou l'herbe de la pampa. Ne répondez oui que si vous en reconnaissez réellement une.",
+        "nl": "Planten van elders die zich snel verspreiden en inheemse soorten verdringen - bijvoorbeeld reuzenriet, Japanse duizendknoop, acacia of pampasgras. Antwoord alleen ja als je er echt een herkent.",
+        "no": "Planter hentet fra andre steder som sprer seg raskt og fortrenger de stedegne - for eksempel kjemperør (Arundo donax), parkslirekne, akasie eller pampasgress. Svar ja bare hvis du faktisk kjenner igjen en av dem."
       },
       "photo_hint": {
         "en": "Left and right are defined looking DOWNSTREAM - the way the water is going."
@@ -1612,7 +2184,11 @@
           "code": "Y",
           "label": {
             "en": "Yes",
-            "pt": "Sim"
+            "pt": "Sim",
+            "it": "Sì",
+            "fr": "Oui",
+            "nl": "Ja",
+            "no": "Ja"
           },
           "explain": {
             "en": "You recognise an invasive species on this bank."
@@ -1624,7 +2200,11 @@
           "code": "N",
           "label": {
             "en": "No",
-            "pt": "Não"
+            "pt": "Não",
+            "it": "No",
+            "fr": "Non",
+            "nl": "Nee",
+            "no": "Nei"
           },
           "explain": {
             "en": "You looked and recognised none."
@@ -1636,7 +2216,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this whenever the photo does not show it clearly. 'Not sure' is a good answer - a guess is not."
@@ -1656,11 +2240,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Vegetation management, right bank",
-        "pt": "Gestão da vegetação, margem direita"
+        "pt": "Gestão da vegetação, margem direita",
+        "it": "Gestione della vegetazione, sponda destra",
+        "fr": "Entretien de la végétation, rive droite",
+        "nl": "Vegetatiebeheer, rechteroever",
+        "no": "Skjøtsel av vegetasjon, høyre bredd"
       },
       "explain": {
         "en": "Signs that plants have been cut, mown or cleared recently - stumps, cut stems, mown strips or piles of cuttings.",
-        "pt": "Sinais de corte recente da vegetação: cepos, faixas cortadas, restos amontoados."
+        "pt": "Sinais de corte recente da vegetação: cepos, faixas cortadas, restos amontoados.",
+        "it": "Segni che le piante sono state tagliate, falciate o rimosse di recente: ceppi, steli recisi, strisce falciate o cumuli di sfalci.",
+        "fr": "Des signes que la végétation a été coupée, fauchée ou débroussaillée récemment : souches, tiges coupées, bandes fauchées ou tas de coupes.",
+        "nl": "Tekenen dat planten onlangs zijn gesnoeid, gemaaid of verwijderd: stronken, afgesneden stengels, gemaaide stroken of hopen maaisel.",
+        "no": "Tegn på at vegetasjon nylig er kuttet, slått eller ryddet: stubber, avkuttede stengler, slåtte striper eller hauger med avklipp."
       },
       "photo_hint": {
         "en": "Left and right are defined looking DOWNSTREAM - the way the water is going."
@@ -1671,7 +2263,11 @@
           "code": "Y",
           "label": {
             "en": "Yes",
-            "pt": "Sim"
+            "pt": "Sim",
+            "it": "Sì",
+            "fr": "Oui",
+            "nl": "Ja",
+            "no": "Ja"
           },
           "explain": {
             "en": "Recent cutting, mowing or clearing is visible."
@@ -1683,7 +2279,11 @@
           "code": "N",
           "label": {
             "en": "No",
-            "pt": "Não"
+            "pt": "Não",
+            "it": "No",
+            "fr": "Non",
+            "nl": "Nee",
+            "no": "Nei"
           },
           "explain": {
             "en": "The vegetation looks unmanaged."
@@ -1695,7 +2295,11 @@
           "code": "NS",
           "label": {
             "en": "I'm not sure",
-            "pt": "Não tenho a certeza"
+            "pt": "Não tenho a certeza",
+            "it": "Non ne sono sicuro",
+            "fr": "Je ne suis pas sûr",
+            "nl": "Ik weet het niet zeker",
+            "no": "Jeg er ikke sikker"
           },
           "explain": {
             "en": "Choose this whenever the photo does not show it clearly. 'Not sure' is a good answer - a guess is not."
@@ -1715,11 +2319,19 @@
       "source": "streamcheck-fhir-docs",
       "label": {
         "en": "Overall stream assessment",
-        "pt": "Avaliação global do ribeiro"
+        "pt": "Avaliação global do ribeiro",
+        "it": "Valutazione complessiva del corso d'acqua",
+        "fr": "Évaluation globale du cours d'eau",
+        "nl": "Algemene beoordeling van de beek",
+        "no": "Samlet vurdering av bekken"
       },
       "explain": {
         "en": "Your own verdict on this stretch of stream, taking everything you saw into account. This one is yours alone - StreamLens will never suggest it.",
-        "pt": "A sua avaliação global deste troço. Esta resposta é apenas sua."
+        "pt": "A sua avaliação global deste troço. Esta resposta é apenas sua.",
+        "it": "Il tuo giudizio su questo tratto di corso d'acqua, tenendo conto di tutto ciò che hai visto. Questo è solo tuo: StreamLens non lo suggerirà mai.",
+        "fr": "Votre propre jugement sur ce tronçon de cours d'eau, en tenant compte de tout ce que vous avez vu. Celui-ci n'appartient qu'à vous : StreamLens ne le suggérera jamais.",
+        "nl": "Jouw eigen oordeel over dit stuk beek, met alles wat je hebt gezien meegewogen. Dit oordeel is alleen van jou: StreamLens zal het nooit voorstellen.",
+        "no": "Din egen vurdering av denne strekningen, der alt du har sett teller med. Denne er bare din: StreamLens vil aldri foreslå den."
       },
       "photo_hint": {},
       "terms": [],
@@ -1728,7 +2340,11 @@
           "code": "GOOD",
           "label": {
             "en": "Good",
-            "pt": "Bom"
+            "pt": "Bom",
+            "it": "Buono",
+            "fr": "Bon",
+            "nl": "Goed",
+            "no": "God"
           },
           "explain": {
             "en": "Looks healthy: natural bed and banks, varied habitat, clean water, living margins."
@@ -1740,7 +2356,11 @@
           "code": "MODERATE",
           "label": {
             "en": "Moderate",
-            "pt": "Moderado"
+            "pt": "Moderado",
+            "it": "Moderato",
+            "fr": "Moyen",
+            "nl": "Matig",
+            "no": "Moderat"
           },
           "explain": {
             "en": "Some clear problems, but the stream still works as a habitat."
@@ -1752,7 +2372,11 @@
           "code": "POOR",
           "label": {
             "en": "Poor",
-            "pt": "Mau"
+            "pt": "Mau",
+            "it": "Scarso",
+            "fr": "Mauvais",
+            "nl": "Slecht",
+            "no": "Dårlig"
           },
           "explain": {
             "en": "Heavily damaged: hard engineering, pollution signs, little or no habitat."
