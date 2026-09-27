@@ -3,9 +3,20 @@
 Written for: the HL7 reviewer. Facts, dates and commands, so every claim here
 can be re-run.
 
-Validated **24 September 2026** with the official HL7 validator,
-`validator_cli.jar` (`org.hl7.fhir.core`, downloaded from the project's latest
-release on the same day), on OpenJDK 17.0.10.
+Validated **24 September 2026** and re-validated **27 September 2026** with the
+official HL7 validator, `validator_cli.jar` (`org.hl7.fhir.core`, downloaded from
+the project's latest release on each of those days), on OpenJDK 17.0.10.
+
+The re-run was needed because the repository moved and the canonical base of our
+two local CodeSystems moved with it, from
+`hackathons-4thyear.github.io/streamlens/fhir` to
+`mitalimehta02.github.io/streamlens/fhir`. A canonical URL is an identifier
+rather than an address, so it did not have to change; it was changed so that
+nothing in a standards-facing artefact names a repository that no longer exists.
+The committed `OperationOutcome` files are the output of that second run, on a
+freshly downloaded validator, and the counts below are identical to the first.
+The example bundle was regenerated from the same stored assessment, so the only
+differences from the first run are the base URL and the bundle timestamp.
 
 ## Result
 
@@ -69,11 +80,15 @@ npx fsh-sushi@3 . -o ../out          # 7 profiles, 11 value sets, 0 errors
 # 3. a bundle from a running StreamLens
 curl -s http://localhost:8000/observations/<id>/fhir > example-bundle.json
 
-# 4. validate
-java -jar tools/validator_cli.jar example-bundle.json -version 4.0.1 \
-  -ig out/fsh-generated/resources \
+# 4. validate against the IG profiles  -> validation-oah-ig.json
+java -jar tools/validator_cli.jar docs/fhir/example-bundle.json -version 4.0.1 \
+  -ig tools/oah-ig/out/fsh-generated/resources \
   -ig docs/fhir                     # our local CodeSystems
-```
+
+# 5. and against base R4 alone, for comparison -> validation-base-r4.json
+java -jar tools/validator_cli.jar docs/fhir/example-bundle.json -version 4.0.1 \
+  -ig docs/fhir                     # still needed, or every local code
+```                                  # is reported as an unresolvable system
 
 Neither the validator jar nor the IG source is committed: they are 200 MB and
 570 KB of somebody else's work respectively, and both are one command away.

@@ -1,7 +1,7 @@
 {
   "resourceType": "CodeSystem",
   "id": "citizen-answer",
-  "url": "https://hackathons-4thyear.github.io/streamlens/fhir/CodeSystem/citizen-answer",
+  "url": "https://mitalimehta02.github.io/streamlens/fhir/CodeSystem/citizen-answer",
   "version": "1.2.0",
   "name": "StreamLensCitizenAnswer",
   "title": "StreamLens citizen assessment answers",

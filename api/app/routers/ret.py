@@ -424,7 +424,7 @@ def city_fhir(
     for observation in session.exec(statement).all():
         bundle = _bundle_for(session, observation.id, site_set, questions)
         entries.append({
-            "fullUrl": f"https://hackathons-4thyear.github.io/streamlens/fhir/Bundle/{bundle['id']}",
+            "fullUrl": f"https://mitalimehta02.github.io/streamlens/fhir/Bundle/{bundle['id']}",
             "resource": bundle,
         })
 

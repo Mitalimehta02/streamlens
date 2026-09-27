@@ -30,11 +30,11 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from typing import Any
 
-CANONICAL_BASE = "https://hackathons-4thyear.github.io/streamlens/fhir"
+CANONICAL_BASE = "https://mitalimehta02.github.io/streamlens/fhir"
 # Bundle.entry.fullUrl must be an absolute URL. "urn:uuid:" is only legal in
 # front of an actual UUID, so entries are addressed under a resource base and
 # relative references resolve against it.
-RESOURCE_BASE = "https://hackathons-4thyear.github.io/streamlens/fhir"
+RESOURCE_BASE = "https://mitalimehta02.github.io/streamlens/fhir"
 QUESTION_CS = f"{CANONICAL_BASE}/CodeSystem/citizen-question"
 ANSWER_CS = f"{CANONICAL_BASE}/CodeSystem/citizen-answer"
 
