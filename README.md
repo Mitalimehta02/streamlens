@@ -71,8 +71,8 @@ A cold start is worse than any of this. Measured on 27 September after
 seventeen minutes of silence: **42.7 s** for the first request, then 0.56 s.
 
 Hosting is Render (API), Neon (Postgres) and Vercel (web app), all on free
-tiers, with a GitHub Actions ping every ten minutes so the free instance does
-not sleep. [docs/deploy.md](docs/deploy.md) has the steps and the limits.
+tiers, with a cron-job.org ping every ten minutes so the free instance does not
+sleep. [docs/deploy.md](docs/deploy.md) has the steps and the limits.
 
 StreamLens is a photo-first, offline-capable field companion for the
 [OneAquaHealth](https://www.oneaquahealth.eu/) Citizen Science App. A vision model
