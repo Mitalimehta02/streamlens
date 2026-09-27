@@ -26,9 +26,9 @@ between all data, real only and demo only.
 
 The same five steps appear in the app itself, on the first screen.
 
-1. **Pick a site.** The list is the OneAquaHealth / ENORA research sites in
-   Benevento, Coimbra, Oslo and Toulouse. No location permission is needed to
-   choose from the list.
+1. **Pick a site.** The list is all 106 OneAquaHealth / ENORA research sites,
+   across Benevento, Coimbra, Ghent, Oslo and Toulouse. No location permission
+   is needed to choose from the list.
 2. **Choose whether the AI helps.** With AI, a shrunk and EXIF-stripped copy of
    the photographs goes to Google Gemini under its free-tier terms. Without, no
    request is made at all. Both paths ask the same questions and record the same
@@ -57,8 +57,10 @@ live site above, two consecutive runs:
 | --- | --- | --- | --- | --- |
 | Run 1 | 84 | 100 | 100 | 100 |
 | Run 2 | 90 | 100 | 100 | 92 |
+| Run 3 | 94 | 100 | 100 | 100 |
 
-Both runs are reported rather than the better one. Performance varies because
+All three runs are reported rather than the best one. Run 3 was taken on a warm
+instance, which is the difference. Performance varies because
 the first screen waits for the site catalogue and the question set from a free
 Render instance in Frankfurt: those two requests took 1.7 s and 1.5 s in the
 slower run, and the map tiles come from OpenStreetMap at about 1.2 s each. The
@@ -82,6 +84,52 @@ short reason in plain language. The citizen confirms or rejects every single one
 
 > **The AI never sets the overall rating.** It suggests answers to factual
 > questions; the Good / Moderate / Poor verdict is always the citizen's.
+
+## How it fits together
+
+```mermaid
+flowchart LR
+  subgraph Phone["Phone - React PWA"]
+    UI["Observe / Explore / Community"]
+    IDB[("IndexedDB outbox<br/>queued while offline")]
+    UI <--> IDB
+  end
+
+  subgraph API["FastAPI on Render - free tier"]
+    ASSESS["POST /assess/suggest<br/>validation gate"]
+    OBS["POST /observations"]
+    INS["health card, alerts,<br/>measures, quests, points"]
+    FHIR["FHIR R4 export"]
+  end
+
+  DB[("Postgres on Neon<br/>answers + AI suggestion,<br/>never the AI alone")]
+  GEM["Google Gemini<br/>only if the citizen opts in"]
+  OM["Open-Meteo<br/>cached 1 h"]
+  CAT[("data/*.json<br/>sites, questions,<br/>alert + quest + points rules,<br/>measures catalogue")]
+
+  UI -->|"2 photos, EXIF stripped, 1024 px"| ASSESS
+  ASSESS -->|"only if AI is on"| GEM
+  GEM -->|"draft codes + confidence + reason"| ASSESS
+  ASSESS -->|"chips the citizen confirms or rejects"| UI
+  UI -->|"the citizen's answers"| OBS
+  OBS --> DB
+  INS --> DB
+  INS --> OM
+  ASSESS -.->|"every code checked<br/>against the published set"| CAT
+  INS -.->|"thresholds with sources"| CAT
+  FHIR --> DB
+  IDB -.->|"flushed on reconnect"| OBS
+
+  classDef ext fill:#fff3cd,stroke:#b8860b;
+  class GEM,OM ext;
+```
+
+Two things the diagram is meant to make obvious. The dotted line into
+`data/*.json` is the validation gate: every code the model returns is checked
+against the published question set before a citizen ever sees it, and the
+thresholds behind every alert live in a JSON file with a `source` on each one,
+not in code. And Gemini sits outside the trust boundary and is reachable only
+when the citizen has opted in - on the manual path no request is made at all.
 
 ## The loop
 
@@ -215,20 +263,30 @@ read them.
 ### Latest numbers
 
 Measured 24 September 2026 on **29 freely-licensed photographs** from Wikimedia
-Commons, against **129 labels**, using **`gemini-3.5-flash-lite`**. Full reports
-in [`eval/reports/`](eval/reports/); the comparison that chose the current
-prompt is [`v1-vs-v2.md`](eval/reports/v1-vs-v2.md).
+Commons, using **`gemini-3.5-flash-lite`**. `assess_v3` is the prompt the live
+API runs, which `/health` reports as `prompt_version`. Full reports are in
+[`eval/reports/`](eval/reports/): [`assess_v1.md`](eval/reports/assess_v1.md),
+[`assess_v3.md`](eval/reports/assess_v3.md), and
+[`v1-vs-v2.md`](eval/reports/v1-vs-v2.md) for the intermediate step.
 
-| | `assess_v1` | `assess_v2` (current) |
+| | `assess_v1` | `assess_v3` (live) |
 |---|---:|---:|
-| Agreement with an independent AI labeller | 89% | **91%** |
+| Agreement with an independent AI labeller, exact match | 89% (51/57) | **90% (52/58)** |
+| Agreement, set overlap (mean Jaccard) | — | **92%** |
 | Suggestions dropped by validation | 0% | **0%** |
-| Said "not sure" | 0% | 2% |
-| Confidence when agreeing / disagreeing | 0.87 / 0.84 | 0.89 / 0.82 |
-| Calibration gap | 0.03 | **0.07** |
-| Stayed silent on images with no watercourse | 9 of 13 | 10 of 13 |
+| Said "not sure" | 0% | 1% |
+| Confidence when agreeing / disagreeing | 0.87 / 0.84 | 0.87 / 0.83 |
+| Calibration gap | 0.03 | 0.04 |
+| Stayed silent on images with no watercourse | 9 of 13 | **13 of 13** |
 | Mean latency | 3.8 s | 4.0 s |
-| Approximate cost | — | **$0.002 per photograph** (~$2 per 1,000) |
+| Approximate cost | $0.0020 per photograph | **$0.0022 per photograph** (~$2.23 per 1,000) |
+
+`assess_v3` folded the watercourse check into the same call, which is what took
+the negative controls from 9 of 13 to 13 of 13. A later run with the litter
+question added scored lower - 83% exact, 87% overlap - and ten of its 31
+photographs fell back to the mock provider under sustained load; it is committed
+as [`assess_v3-litter.md`](eval/reports/assess_v3-litter.md) rather than left
+out because it is the least flattering run.
 
 **Read "agreement", not "accuracy".** There were **no human expert labels**.
 The labeller is Claude (the coding agent) viewing each photograph and answering
@@ -240,14 +298,15 @@ a scoring artefact - so the headline figure understates compatibility and the
 sample is far too small to make a confident claim in either direction.
 
 The result worth more than the percentages: **nothing was dropped by validation
-in either run.** Across 173 suggestions the model never invented an answer code
-or answered a question it was not offered. The guard held.
+in any run.** Across 187 suggestions in the two runs above - 91 from `assess_v1`
+and 96 from `assess_v3` - the model never invented an answer code or answered a
+question it was not offered. The guard held.
 
 ### Limits on those numbers
 
 - **No human expert was involved.** Both the labeller and the model are AI.
-- **Small sample.** 29 photographs, 129 labels, 45-57 scored comparisons. A
-  two-point difference is well inside the noise, and per-question rows with two
+- **Small sample.** 29 photographs and 57-58 scored comparisons per run. A
+  one-point difference is well inside the noise, and per-question rows with two
   or three observations are anecdote.
 - **Web photographs, not app submissions.** Images chosen from Commons
   categories and framed by photographers with other purposes - not phone snaps
@@ -308,7 +367,21 @@ stubbed and what differs in production, is in [docs/STATUS.md](docs/STATUS.md).
 - **Question set** — the app's `api/citizens/*` endpoints require authentication,
   so [`data/questions.json`](data/questions.json) is reconstructed from the published
   OneAquaHealth assessment categories and marked `"source": "manual"`.
-- **Weather** — [Open-Meteo](https://open-meteo.com/) (no key).
+- **Restoration measures** — *D2.4 Catalogue of measures for urban aquatic
+  ecosystems rehabilitation*, Dias, M., Serra, S.R.Q. & Feio, M.J. (University of
+  Coimbra), OneAquaHealth, Horizon Europe Grant Agreement 101086521.
+  [DOI 10.5281/zenodo.20040211](https://doi.org/10.5281/zenodo.20040211),
+  **CC-BY-4.0**. 25 measures across 10 observable problems, each carrying the
+  printed page it came from; `scripts/build_measures.py` re-opens the PDF and
+  confirms every cited page still says what we claim.
+- **Weather** — [Open-Meteo](https://open-meteo.com/) (no key), data
+  **CC-BY-4.0**.
+- **Map tiles** — © [OpenStreetMap](https://www.openstreetmap.org/copyright)
+  contributors, ODbL. Attributed on every map in the app.
+- **Sample photographs** — six Creative Commons or public domain images from
+  Wikimedia Commons, each credited with author, licence and source link beside
+  the image and in
+  [`web/public/samples/LICENCES.md`](web/public/samples/LICENCES.md).
 
 ## Testing the vision prompt
 
@@ -333,7 +406,7 @@ See [CLAUDE.md](CLAUDE.md) for the full brief, architecture and working rules.
 
 ## Licence
 
-Code: MIT. Site data belongs to the OneAquaHealth / ENORA consortium and is
+Code: MIT, in [LICENSE](LICENSE). Site data belongs to the OneAquaHealth / ENORA consortium and is
 redistributed here for hackathon evaluation with attribution. The six sample
 photographs in `web/public/samples/` keep their own Creative Commons or public
 domain licences, listed with their authors in

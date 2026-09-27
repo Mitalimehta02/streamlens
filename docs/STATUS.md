@@ -67,7 +67,7 @@ of retrying a bad payload forever. Photos are stored as `ArrayBuffer`, not
 - **106 real research sites** fetched once from the public ENORA endpoint into
   `data/sites.json` and served locally. Attributed in the file, the API response
   and the UI.
-- **23 questions** in `data/questions.json`. The app's own question endpoint
+- **24 questions** in `data/questions.json`. The app's own question endpoint
   requires authentication, so ids and answer codes come from a public draft FHIR
   CodeSystem, marked `source: "streamcheck-fhir-docs"` per question and option.
   Our explanations, glossary and translations are marked `source: "manual"`.
@@ -80,7 +80,7 @@ documented in `web/src/index.css`, labelled controls, and a glossary built as a
 tappable popover rather than a hover tooltip — hover does not exist on a phone.
 
 ### Tests
-- **274 pytest tests**, none touching the network. `pytest.ini` lives at the
+- **279 pytest tests**, none touching the network. `pytest.ini` lives at the
   repository root: when it lived in `api/`, running `pytest` from the root
   picked up no configuration and seven async tests skipped themselves while
   the run still reported success.
