@@ -11,6 +11,13 @@ name: Keep the demo awake
 # frequent for a private one. GitHub also disables scheduled workflows after 60
 # days without repository activity, and can delay a cron under load - neither
 # matters over the life of a hackathon demo.
+#
+# THIS DOES NOT RUN IN A FORK. GitHub disables workflows in forked repositories
+# until someone enables them on the Actions tab, and does not run schedule
+# events in forks at all. The deployed repository is a fork, so the live demo is
+# pinged by an external scheduler (cron-job.org) instead, and this file is kept
+# because it is correct the moment the repository leaves the fork network.
+# See docs/deploy.md.
 
 on:
   schedule:

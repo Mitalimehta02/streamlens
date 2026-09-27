@@ -12,7 +12,7 @@ matters, the limit is written down rather than discovered later.
 | API (FastAPI) | Render | 750 instance-hours a month. One always-awake service uses about 720 of them, so run exactly one. |
 | Database (Postgres) | Neon | 0.5 GB and about 190 compute-hours a month. Suspends after five minutes idle and wakes on the next query. |
 | Web app (React) | Vercel | Hobby plan. Static build, generous bandwidth. |
-| Keep-awake ping | GitHub Actions | Free and unlimited on a public repository. |
+| Keep-awake ping | cron-job.org | Free, no card, nothing to deploy. A GitHub Actions workflow does the same job, but not in a fork - see below. |
 
 Render was chosen over Fly.io for the API because it needs no card at sign-up,
 and Neon over Render's own Postgres because Render's free database is deleted
@@ -93,27 +93,40 @@ could not keep.
 ## 4. The keep-awake ping
 
 A free Render service sleeps after about fifteen minutes of silence, and the
-first visitor afterwards waits the better part of a minute for it to wake. The
-workflow in [`.github/workflows/keep-awake.yml`](../.github/workflows/keep-awake.yml)
-pings it every ten minutes.
+first visitor afterwards waits for it to wake. On this service that wait was
+measured at **42.7 seconds**, which is not a thing to hand a judge.
 
-Set one repository variable: **Settings > Secrets and variables > Actions >
-Variables > New repository variable**, named `API_URL`, with the Render URL.
-Without it the workflow exits quietly rather than failing. Run it once by hand
-from the Actions tab to check.
+**This demo uses [cron-job.org](https://cron-job.org) to request
+`/health` every ten minutes.** It is free, needs no card, and needs nothing in
+this repository: create a cronjob, give it the URL
+`https://<your-service>.onrender.com/health`, set the interval to ten minutes,
+and save.
 
-**This does not work in a fork.** GitHub disables workflows in a forked
-repository until someone enables them on the Actions tab, and it does not run
-`schedule` events in forks at all - the workflow will sit at zero runs no matter
-what the variable says. If the deployed repository is a fork, either take it out
-of the fork network (**Settings > General**, or ask GitHub Support) or push the
-same history to a repository created empty. `workflow_dispatch` still works in a
-fork, so the ping can be triggered by hand, which is fine for a demo being
-watched and useless otherwise.
+Whatever does the pinging, it should ping `/health` specifically. That endpoint
+reads local JSON files and opens no database connection, so it keeps Render
+awake without waking Neon, whose free compute-hours would otherwise be spent on
+nothing but the pings themselves. Keeping one service awake continuously uses
+about 720 of Render's 750 free instance-hours a month, which is the whole
+allowance - it is another reason to run exactly one service.
 
-It pings `/health`, which reads local JSON files and opens no database
-connection. That is deliberate: a ping that touched the database would wake Neon
-every ten minutes and spend the compute-hour allowance on nothing.
+### The GitHub Actions alternative, and why it is not what runs here
+
+[`.github/workflows/keep-awake.yml`](../.github/workflows/keep-awake.yml) does
+the same job from GitHub, for free, on a public repository. To use it, set one
+repository variable - **Settings > Secrets and variables > Actions > Variables >
+New repository variable**, named `API_URL`, with the Render URL - and the
+schedule does the rest. Without the variable the workflow exits quietly rather
+than failing.
+
+**It cannot work in a fork.** GitHub disables workflows in a forked repository
+until someone enables them on the Actions tab, and does not run `schedule`
+events in forks at all: the workflow sits at zero runs no matter what the
+variable says. This repository is a fork, which is exactly why the ping is
+external. To use the workflow instead, take the repository out of the fork
+network (**Settings > General**, or ask GitHub Support), or push the same
+history to a repository created empty. The workflow is kept in the tree because
+it costs nothing there and is correct the moment the repository is not a fork;
+`workflow_dispatch` also still works by hand.
 
 ## What the hosted demo is, and is not
 

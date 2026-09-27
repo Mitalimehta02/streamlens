@@ -13,8 +13,9 @@ IEEE OneAquaHealth Global Hackathon 2026.
 | **Runs locally** | `npm run setup && npm run dev` — no key needed |
 
 The API is on a free Render instance. If it has been idle for a quarter of an
-hour the first request wakes it, which takes about a minute; a scheduled ping
-every ten minutes normally prevents that.
+hour the first request wakes it, which took 42.7 s when measured; a cron-job.org
+schedule pings it every ten minutes to prevent that. See
+[Known limits](#known-limits).
 
 The demo needs no account and no sign-in. It carries labelled synthetic data so
 the maps and alerts have something to show; every synthetic record says
@@ -257,6 +258,41 @@ or answered a question it was not offered. The guard held.
   (HTTP 503 under sustained load), so these are `gemini-3.5-flash-lite` numbers.
 - **Costs are approximate** and depend on [`eval/pricing.json`](eval/pricing.json)
   being current.
+
+## Known limits
+
+Written here rather than left to be discovered. The full list, including what is
+stubbed and what differs in production, is in [docs/STATUS.md](docs/STATUS.md).
+
+- **Cold start.** The API is on a free Render instance that sleeps after about
+  fifteen minutes idle; waking it took **42.7 s** when measured. A cron-job.org
+  schedule requests `/health` every ten minutes to prevent that. If the demo is
+  ever slow to load, that is what happened, and the second request is fast.
+  (The GitHub Actions workflow in this repository would do the same job, but
+  GitHub does not run scheduled workflows in a fork, and this repository is one.)
+- **A free AI quota.** 10 AI calls per device per hour and 300 a day across the
+  whole demo. Past either cap an assessment still works: it falls back to the
+  labelled mock provider with a visible notice, and never returns an error.
+- **Photographs are not kept.** On the hosted demo they are measured and
+  discarded, so nothing can be shown publicly. The quality measurements are
+  stored; the images are not.
+- **Most of the demo data is synthetic**, and every synthetic record says so.
+  Two sites carry a planted weather forecast so the rain-driven alert rules can
+  be demonstrated on a dry day; those are labelled **DEMO FORECAST** wherever
+  the number appears.
+- **The question set is translated into English and Portuguese only.** The other
+  four languages fall back to English for question text, and every non-English
+  string is machine translated and flagged as such. A native speaker should
+  review before field use.
+- **No accounts, and no authentication.** Anyone who can reach the API can post
+  an assessment. Acceptable for a demo; not for production.
+- **The AI evaluation is small.** 29 photographs, one independent labeller, one
+  model, one afternoon. The metric is *agreement with an independent AI
+  labeller*, not accuracy against ground truth - see
+  [Responsible AI](#responsible-ai).
+- **Not tested on a physical phone.** The PWA manifest and service worker build
+  and serve correctly, and the layout is designed for one hand outdoors, but
+  the install has only been exercised in a desktop browser.
 
 ## Data sources
 
