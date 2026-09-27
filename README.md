@@ -12,6 +12,7 @@ assessment), **2** (data to insight), **6** (resilience and early warning), **5*
 
 | | |
 | --- | --- |
+| **Demo video** | **<https://www.youtube.com/watch?v=ZC17Y4XpUPE>** |
 | **Live demo** | **<https://streamlens-ten.vercel.app>** |
 | **API** | <https://streamlens-api.onrender.com> — [interactive docs](https://streamlens-api.onrender.com/docs) |
 | **Runs locally** | `npm run setup && npm run dev` — no key needed |

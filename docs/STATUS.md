@@ -9,7 +9,9 @@ prompt against real photographs. Phase 2 built **Understand & Act**. Phase 3 bui
 which, because a demo that hides its seams wastes a reviewer's time.
 
 **Live:** <https://streamlens-ten.vercel.app> (API:
-<https://streamlens-api.onrender.com>). The hosted demo does not behave
+<https://streamlens-api.onrender.com>). **Demo video:**
+<https://www.youtube.com/watch?v=ZC17Y4XpUPE>. **Two-page judge brief:**
+[StreamLens-judge-brief.pdf](StreamLens-judge-brief.pdf). The hosted demo does not behave
 identically to a local checkout, and [the differences are listed
 below](#the-hosted-demo-versus-a-local-checkout) rather than left for a reviewer
 to discover.

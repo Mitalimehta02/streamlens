@@ -10,8 +10,9 @@
       --print-to-pdf=docs/StreamLens-judge-brief.pdf \
       docs/StreamLens-judge-brief.html
 
-  THE VIDEO LINK IS A PLACEHOLDER. Replace the href and the text in the
-  element marked data-placeholder="video" below, then re-print.
+  The three links in the strip are real anchors, so they stay clickable in the
+  printed PDF. If one changes, change the href and the visible text together -
+  a PDF where the two disagree is worse than one with no link at all.
 
   Every number here is taken from the README and the committed reports. If one
   changes there, change it here too.
@@ -73,8 +74,7 @@
   }
   .link .what { font-size: 7.4pt; text-transform: uppercase; letter-spacing: 0.35pt; color: var(--muted); font-weight: 700; }
   .link .where { font-size: 8.5pt; color: var(--brand-dark); word-break: break-all; font-weight: 600; }
-  .link.placeholder { border-left-color: var(--warn-ink); background: var(--warn-bg); }
-  .link.placeholder .where { color: var(--warn-ink); }
+  .link a { color: inherit; text-decoration: none; }
 
   .note {
     font-size: 8pt; color: var(--muted); margin: 0 0 4mm;
@@ -157,15 +157,15 @@
   <div class="links">
     <div class="link">
       <div class="what">Live demo</div>
-      <div class="where">streamlens-ten.vercel.app</div>
+      <div class="where"><a href="https://streamlens-ten.vercel.app">streamlens-ten.vercel.app</a></div>
     </div>
     <div class="link">
       <div class="what">Code</div>
-      <div class="where">github.com/Mitalimehta02/streamlens</div>
+      <div class="where"><a href="https://github.com/Mitalimehta02/streamlens">github.com/Mitalimehta02/streamlens</a></div>
     </div>
-    <div class="link placeholder" data-placeholder="video">
-      <div class="what">Video</div>
-      <div class="where">&lt;YOUTUBE_URL&gt; — to be added</div>
+    <div class="link">
+      <div class="what">Demo video</div>
+      <div class="where"><a href="https://www.youtube.com/watch?v=ZC17Y4XpUPE">youtube.com/watch?v=ZC17Y4XpUPE</a></div>
     </div>
   </div>
 
