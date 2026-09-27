@@ -77,6 +77,18 @@ could not keep.
 4. Deploy, then copy the resulting URL back into Render's `CORS_ORIGINS` and
    redeploy the API. The API answers that one origin and no other; a wildcard
    would make every site on the internet able to spend your Gemini quota.
+5. Check it took. `/health` lists the origins the running process will answer:
+
+   ```bash
+   curl -s https://<your-service>.onrender.com/health
+   ```
+
+   If the Vercel URL is not in `cors_origins`, the variable has not reached the
+   process - the value is saved against another service, the key is misspelled,
+   or the service has not restarted since. The symptom in a browser is the app
+   loading its shell and then showing "The site list could not be loaded",
+   because every request it makes is blocked; the API itself looks perfectly
+   healthy from the outside, which is why it is worth checking directly.
 
 ## 4. The keep-awake ping
 
@@ -89,6 +101,15 @@ Set one repository variable: **Settings > Secrets and variables > Actions >
 Variables > New repository variable**, named `API_URL`, with the Render URL.
 Without it the workflow exits quietly rather than failing. Run it once by hand
 from the Actions tab to check.
+
+**This does not work in a fork.** GitHub disables workflows in a forked
+repository until someone enables them on the Actions tab, and it does not run
+`schedule` events in forks at all - the workflow will sit at zero runs no matter
+what the variable says. If the deployed repository is a fork, either take it out
+of the fork network (**Settings > General**, or ask GitHub Support) or push the
+same history to a repository created empty. `workflow_dispatch` still works in a
+fork, so the ping can be triggered by hand, which is fine for a demo being
+watched and useless otherwise.
 
 It pings `/health`, which reads local JSON files and opens no database
 connection. That is deliberate: a ping that touched the database would wake Neon

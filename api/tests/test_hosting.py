@@ -81,6 +81,28 @@ def test_a_postgres_engine_can_actually_be_built():
         set_engine(None)
 
 
+# --------------------------------------------------------------------- CORS
+
+def test_health_reports_the_origins_the_service_answers(client, settings):
+    """A misconfigured CORS list is otherwise invisible from outside.
+
+    The browser reports only a blocked request and the service still looks
+    healthy, so the one thing an operator needs - what the running process
+    thinks its allow-list is - was impossible to see without shell access.
+    """
+    body = client.get("/health").json()
+    assert body["cors_origins"] == settings.cors_origin_list
+    assert body["cors_origins"], "a service with no allowed origin answers no browser"
+
+
+def test_the_origin_list_is_split_and_trimmed(client):
+    """Pasted values arrive with stray spaces; empty entries are not origins."""
+    parsed = Settings(
+        cors_origins=" https://streamlens-ten.vercel.app , http://localhost:5173 ,,"
+    ).cors_origin_list
+    assert parsed == ["https://streamlens-ten.vercel.app", "http://localhost:5173"]
+
+
 # ------------------------------------------------------------- STORE_PHOTOS
 
 @pytest.fixture

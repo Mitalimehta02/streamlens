@@ -32,6 +32,7 @@ def health(
         questions=len(questions.questions),
         sites=len(site_set.sites),
         prompt_version=prompt_version(),
+        cors_origins=settings.cors_origin_list,
     )
 
 

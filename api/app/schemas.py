@@ -256,3 +256,13 @@ class HealthResponse(BaseModel):
     questions: int
     sites: int
     prompt_version: str
+    cors_origins: list[str] = Field(
+        default_factory=list,
+        description=(
+            "Origins this service answers browser requests from. Listed because "
+            "a misconfigured CORS_ORIGINS is otherwise invisible: the browser "
+            "reports only a blocked request, and the service looks healthy. Not "
+            "a secret - the allow-origin header already reveals it one origin "
+            "at a time."
+        ),
+    )
