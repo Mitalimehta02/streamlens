@@ -26,17 +26,28 @@ services:
       - key: PYTHON_VERSION
         value: "3.11.9"
 
-      # --- typed into the dashboard, never committed ----------------------
+      # --- the two secrets, typed into the dashboard, never committed -----
       # The Neon pooled connection string, pasted exactly as Neon prints it.
       - key: DATABASE_URL
         sync: false
       # The Gemini free-tier key.
       - key: GEMINI_API_KEY
         sync: false
-      # The Vercel domain, e.g. https://streamlens.vercel.app - no trailing
-      # slash, no wildcard. This is the only origin the API answers.
+
+      # --- CORS, committed on purpose -------------------------------------
+      # Origins the API answers browser requests from: the Vercel domain, and
+      # localhost so a developer can point a local web app at the hosted API.
+      # No trailing slashes, no wildcard - a wildcard would let any site on the
+      # internet spend the Gemini quota.
+      #
+      # A plain value, not sync: false. This service is Blueprint-managed, so
+      # the file is the source of truth; a value typed into the dashboard for a
+      # sync: false key did not reach the process, and the symptom was a service
+      # that looked healthy while every browser request to it was refused.
+      # Nothing here is secret: /health lists these origins, and the
+      # allow-origin header reveals them one at a time anyway.
       - key: CORS_ORIGINS
-        sync: false
+        value: https://streamlens-ten.vercel.app,http://localhost:5173,http://127.0.0.1:5173
 
       - key: AI_PROVIDER
         value: gemini

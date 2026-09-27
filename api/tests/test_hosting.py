@@ -15,7 +15,9 @@ from fastapi.testclient import TestClient
 from sqlmodel import Session, SQLModel, create_engine, select
 
 from app import retention
-from app.config import Settings, get_settings
+from app.config import API_DIR, Settings, get_settings
+
+REPO_ROOT = API_DIR.parent
 from app.main import create_app
 from app.models import Observation, ObservationPhoto, set_engine
 from tests.conftest import sharp_image
@@ -101,6 +103,57 @@ def test_the_origin_list_is_split_and_trimmed(client):
         cors_origins=" https://streamlens-ten.vercel.app , http://localhost:5173 ,,"
     ).cors_origin_list
     assert parsed == ["https://streamlens-ten.vercel.app", "http://localhost:5173"]
+
+
+# The value committed in render.yaml. Kept here verbatim so that changing one
+# without the other fails a test rather than a deployment.
+RENDER_YAML_CORS = (
+    "https://streamlens-ten.vercel.app,http://localhost:5173,http://127.0.0.1:5173"
+)
+
+
+def test_the_committed_origins_survive_the_environment(monkeypatch):
+    """The comma-separated form has to work as an environment variable.
+
+    This is the path a deployment actually takes, and it is not the same path as
+    passing the value to the constructor: pydantic-settings parses a list-typed
+    field from the environment as JSON, so had cors_origins been declared
+    list[str] this exact string would raise at start-up rather than parse. The
+    field is a plain str for that reason, and this test is what says so.
+
+    _env_file=None keeps a developer's own api/.env out of the result.
+    """
+    monkeypatch.setenv("CORS_ORIGINS", RENDER_YAML_CORS)
+    settings = Settings(_env_file=None)
+
+    assert settings.cors_origin_list == [
+        "https://streamlens-ten.vercel.app",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ]
+
+
+def test_render_yaml_is_the_source_of_these_origins():
+    """The blueprint and the test agree, or one of them is wrong.
+
+    The service is Blueprint-managed: a value typed into the Render dashboard
+    against a `sync: false` key never reached the process, and the only symptom
+    was every browser request being refused by a service that otherwise looked
+    healthy. The file is the source of truth now, so the file is what is read.
+    """
+    blueprint = (REPO_ROOT / "render.yaml").read_text(encoding="utf-8")
+    assert f"value: {RENDER_YAML_CORS}" in blueprint, (
+        "render.yaml no longer sets CORS_ORIGINS to the value this suite checks"
+    )
+    assert "https://streamlens-ten.vercel.app" in RENDER_YAML_CORS
+
+
+def test_the_deployed_origin_is_not_a_wildcard():
+    """A wildcard would let any site on the internet spend the Gemini quota."""
+    origins = Settings(cors_origins=RENDER_YAML_CORS).cors_origin_list
+    assert "*" not in origins
+    assert all(o.startswith("http://") or o.startswith("https://") for o in origins)
+    assert not any(o.endswith("/") for o in origins), "a trailing slash never matches"
 
 
 # ------------------------------------------------------------- STORE_PHOTOS

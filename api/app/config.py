@@ -41,6 +41,10 @@ class Settings(BaseSettings):
     upload_dir: str = "./uploads"
 
     # --- CORS --------------------------------------------------------------
+    # A comma-separated string, deliberately not a list[str]: pydantic-settings
+    # parses a list-typed field from the environment as JSON, so a plain
+    # comma-separated CORS_ORIGINS would fail to parse and take the whole
+    # service down at start-up. The splitting happens in cors_origin_list.
     cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173"
 
     # --- Photo handling ----------------------------------------------------
