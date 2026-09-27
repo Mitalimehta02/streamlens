@@ -4,6 +4,10 @@
 
 IEEE OneAquaHealth Global Hackathon 2026.
 
+**Primary track: 1 — Citizen Science UX.** Also contributes to **3** (AI-supported
+assessment), **2** (data to insight), **6** (resilience and early warning), **5**
+(community and gamification) and **7** (digital health standards: FHIR R4).
+
 ## Try it
 
 | | |
@@ -85,6 +89,17 @@ short reason in plain language. The citizen confirms or rejects every single one
 > **The AI never sets the overall rating.** It suggests answers to factual
 > questions; the Good / Moderate / Poor verdict is always the citizen's.
 
+## See it
+
+| | |
+|---|---|
+| ![AI suggestion chips, each with a confidence and a plain-language reason](docs/img/observe-chips.png) | ![The rating screen, which says the AI has no opinion here, by design](docs/img/rating-ai-silent.png) |
+| **The AI suggests.** Each chip carries a confidence and a one-sentence reason pointing at something in the photograph. Nothing is recorded until the citizen presses Correct, Not right, or Change answer. | **The citizen decides.** The Good / Moderate / Poor rating is the one answer the AI is architecturally forbidden to touch, and the screen says so. |
+| ![The app refusing a photograph with no watercourse in it](docs/img/watercourse-refusal.png) | ![An alert showing the measured value, the threshold and the source of the threshold](docs/img/alert-thresholds.png) |
+| **It refuses rather than guesses.** Given a photograph with no water in it, the assessment declines and says why — and still offers to let you answer by hand. | **Every alert shows its own arithmetic**: the measured value, the threshold it passed, and where that threshold came from. Planted demo weather is badged as such. |
+| ![The coverage map and the team leaderboard](docs/img/coverage-and-teams.png) | ![The FHIR R4 export control on a site page](docs/img/fhir-export.png) |
+| **What the community got back**: which sites were covered this month, and teams — never individuals — on the leaderboard. | **FHIR R4 export** on every site and city, validated against the OneAquaHealth IG with 0 errors and 0 warnings. |
+
 ## How it fits together
 
 ```mermaid
@@ -137,10 +152,10 @@ when the citizen has opted in - on the manual path no request is made at all.
 |---|---|---|
 | **1. Observe** | Photo-first guided assessment, AI suggestion chips with reasons, plain-language glossary, live photo/GPS quality checks, 6 languages, offline-first PWA | 1, 3 |
 | **2. Understand & Act** | Stream health card, rule-based 48-hour alert (Open-Meteo + recent reports) that shows its reasons, problems → restoration measures with health benefits | 6, 2 |
-| **3. Return** | Quests computed from real data gaps, points for evidence quality and never for volume, team-only leaderboard, coverage map, wellbeing mirror with a minimum group size | 5, 4 |
+| **3. Return** | Quests computed from real data gaps, points for evidence quality and never for volume, team-only leaderboard, coverage map, wellbeing mirror with a minimum group size | 5 |
 
 Plus **FHIR R4 export** (Observation + Location) following the hl7-eu/oah
-Implementation Guide.
+Implementation Guide — **Track 7**.
 
 **Status: all three parts built, plus FHIR R4 export.** See
 [docs/STATUS.md](docs/STATUS.md) for exactly what works and what is stubbed —
@@ -302,6 +317,44 @@ in any run.** Across 187 suggestions in the two runs above - 91 from `assess_v1`
 and 96 from `assess_v3` - the model never invented an answer code or answered a
 question it was not offered. The guard held.
 
+### What an ecologist should check first
+
+We are not ecologists, and the evaluation above has **no expert labels in it at
+all**. These are the three places where a OneAquaHealth ecologist would most
+quickly tell us we are wrong, taken from the disagreements in
+[`v1-vs-v2.md`](eval/reports/v1-vs-v2.md):
+
+1. **`bankType` is ambiguously worded, and that is our fault.** On two
+   photographs the model answered for the bank as a whole (mud, earth, matting)
+   while our labeller answered for the engineered structure in the middle of the
+   frame (sheet piling, concrete). Both readings are defensible because the
+   question never says which to describe. We reworded it to ask for the
+   *hardest* material visible — that is a guess at intent, and it may be the
+   wrong guess.
+2. **Scoring a correct superset as a failure.** On `streambed_01` the model
+   answered "stone deposits **and** riffles" where our label said only stone
+   deposits; the riffles are genuinely there. Exact-set matching counted that as
+   a complete miss, which is why we added set overlap alongside it. Which
+   measure an ecologist would want reported is a question we cannot answer.
+3. **`waterAspect` cannot separate "muddy" from "an unusual colour".** Strong
+   opaque green fits both, and the option list forces a choice. If that
+   distinction matters ecologically, the option list needs splitting.
+
+**About half of every assessment is deliberately left to the human.** Six of the
+24 questions are never suggested at all — water abstraction, invasive species
+and vegetation management on both banks, and the overall rating — because a
+still photograph is not evidence for them. Beyond that, in the measured runs the
+model answered only about **a fifth of the questions it was offered**, staying
+silent on the rest. An assessment that arrives mostly blank is the system
+working, not failing.
+
+**If you are a OneAquaHealth ecologist: please correct us.** The labels are in
+[`eval/labels.csv`](eval/labels.csv), one row per photograph and question, and
+every alert threshold is in [`data/alert_rules.json`](data/alert_rules.json)
+with its own `source` field — several of which currently read `project
+judgement`, which is an honest way of writing "we picked this and it needs
+checking". Both are plain files; correcting them needs no code.
+
 ### Limits on those numbers
 
 - **No human expert was involved.** Both the labeller and the model are AI.
@@ -357,6 +410,36 @@ stubbed and what differs in production, is in [docs/STATUS.md](docs/STATUS.md).
 - **Not tested on a physical phone.** The PWA manifest and service worker build
   and serve correctly, and the layout is designed for one hand outdoors, but
   the install has only been exercised in a desktop browser.
+
+## Path to production
+
+What would have to change for this to run beyond a hackathon demo.
+
+- **Expert in the loop.** A review queue for flagged observations — low
+  confidence, disagreement with a nearby visit, or a watercourse refusal the
+  citizen overrode — so an ecologist confirms or corrects before the record is
+  treated as usable. The data model already stores the citizen's answer and the
+  AI's suggestion separately, which is what such a queue needs.
+- **Identity from the OneAquaHealth app, not from us.** StreamLens deliberately
+  has no accounts. In production it should carry the existing citizen-science
+  app's identity rather than invent a second one, which also gives it the
+  moderation and blocking that a public dataset needs.
+- **Integration by data, not by rewrite.** Answer codes already come from the
+  OneAquaHealth question set and the FHIR export already targets the hl7-eu/oah
+  profiles, so the join is a data exchange rather than a merge of two apps.
+- **AI cost.** Measured at **$0.0022 per assessment** in an evaluation that sent
+  one photograph; the live flow sends two, so budget roughly **$0.004**. That is
+  about **$4 per 1,000** assessments a month and **$40 per 10,000** — small
+  enough that the free-tier caps in this demo exist to protect a key, not a
+  budget.
+- **Off the free tiers.** Paid Render and Neon plans (check their current
+  pricing rather than a number written in September), object storage if
+  photographs are ever kept, and a real secret manager. Nothing in the
+  architecture assumes free hosting; the SQLite-or-Postgres switch is one
+  environment variable.
+- **Ownership.** The honest end state is not a separate product. It is handing
+  this to the OneAquaHealth citizen-science work package as a contribution to
+  their app, under the MIT licence it already carries.
 
 ## Data sources
 
