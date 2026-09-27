@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>StreamLens — judge brief</title>
+<!--
+  Two A4 pages, printed with headless Chrome:
+
+    chrome --headless --disable-gpu --no-pdf-header-footer \
+      --print-to-pdf=docs/StreamLens-judge-brief.pdf \
+      docs/StreamLens-judge-brief.html
+
+  THE VIDEO LINK IS A PLACEHOLDER. Replace the href and the text in the
+  element marked data-placeholder="video" below, then re-print.
+
+  Every number here is taken from the README and the committed reports. If one
+  changes there, change it here too.
+-->
+<style>
+  :root {
+    --brand: #0f766e;
+    --brand-dark: #115e59;
+    --brand-light: #ccfbf1;
+    --ink: #0f172a;
+    --muted: #475569;
+    --surface: #f8fafc;
+    --line: #cbd5e1;
+    --warn-bg: #fef3c7;
+    --warn-ink: #78350f;
+  }
+
+  @page { size: A4; margin: 0; }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: var(--ink);
+    font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 9.1pt;
+    line-height: 1.42;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 12mm 13mm 9mm;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* --- masthead ------------------------------------------------------- */
+  .masthead { border-bottom: 2.5pt solid var(--brand); padding-bottom: 3.5mm; margin-bottom: 4mm; }
+  h1 { font-size: 23pt; margin: 0; color: var(--brand-dark); letter-spacing: -0.4pt; }
+  .tagline { font-size: 11pt; font-weight: 600; margin: 1.2mm 0 2mm; color: var(--ink); }
+  .track {
+    display: inline-block; background: var(--brand-light); color: var(--brand-dark);
+    border-radius: 2mm; padding: 1.3mm 2.6mm; font-size: 8.4pt; font-weight: 600;
+  }
+  .track span { font-weight: 400; color: var(--muted); }
+
+  /* --- links strip ---------------------------------------------------- */
+  .links { display: flex; gap: 3mm; margin: 4mm 0 2mm; }
+  .link {
+    flex: 1; border: 0.7pt solid var(--line); border-left: 2.2pt solid var(--brand);
+    border-radius: 1.5mm; padding: 2mm 2.6mm; background: var(--surface);
+  }
+  .link .what { font-size: 7.4pt; text-transform: uppercase; letter-spacing: 0.35pt; color: var(--muted); font-weight: 700; }
+  .link .where { font-size: 8.5pt; color: var(--brand-dark); word-break: break-all; font-weight: 600; }
+  .link.placeholder { border-left-color: var(--warn-ink); background: var(--warn-bg); }
+  .link.placeholder .where { color: var(--warn-ink); }
+
+  .note {
+    font-size: 8pt; color: var(--muted); margin: 0 0 4mm;
+    border-left: 2pt solid var(--line); padding-left: 2.6mm;
+  }
+
+  /* --- sections -------------------------------------------------------- */
+  h2 {
+    font-size: 10.5pt; margin: 3.6mm 0 1.6mm; color: var(--brand-dark);
+    text-transform: uppercase; letter-spacing: 0.6pt;
+    border-bottom: 0.7pt solid var(--line); padding-bottom: 1.1mm;
+  }
+  h2:first-of-type { margin-top: 0; }
+  h3 { font-size: 9.3pt; margin: 0 0 0.9mm; color: var(--ink); }
+  p { margin: 0 0 2mm; }
+  .muted { color: var(--muted); }
+
+  .loop { display: flex; gap: 3mm; }
+  .loop > div { flex: 1; background: var(--surface); border-radius: 1.5mm; padding: 2.6mm 2.8mm; border-top: 2pt solid var(--brand); }
+  .loop h3 { color: var(--brand-dark); }
+  .loop p { margin: 0; font-size: 8.5pt; }
+
+  ol.tour { margin: 0; padding-left: 4.6mm; }
+  ol.tour li { margin-bottom: 1.4mm; }
+  ol.tour b { color: var(--brand-dark); }
+
+  .guards { display: flex; gap: 3mm; margin-bottom: 2.5mm; }
+  .guards > div { flex: 1; border: 0.7pt solid var(--line); border-radius: 1.5mm; padding: 2.1mm 2.4mm; }
+  .guards h3 { font-size: 8.6pt; color: var(--brand-dark); }
+  .guards p { margin: 0; font-size: 8.2pt; }
+
+  .figures { display: flex; gap: 2.5mm; margin: 2.5mm 0; }
+  .figures > div { flex: 1; text-align: center; }
+  .figures .n { font-size: 17pt; font-weight: 700; color: var(--brand); line-height: 1.05; }
+  .figures .l { font-size: 7.6pt; color: var(--muted); line-height: 1.25; }
+
+  .callout {
+    background: var(--brand-light); border-radius: 1.5mm; padding: 2.4mm 3mm;
+    font-size: 8.4pt; margin-bottom: 2.5mm;
+  }
+
+  .shots { display: flex; gap: 3mm; margin: 2mm 0 1mm; }
+  .shots figure { flex: 1; margin: 0; }
+  /* Both screenshots are tall phone captures; at half the page width they would
+     each run past the bottom of the sheet. A fixed height anchored to the top
+     shows the part that carries the point and keeps the page to two sides. */
+  .shots img {
+    width: 100%; height: 47mm; object-fit: cover; object-position: top center;
+    border: 0.7pt solid var(--line); border-radius: 1.2mm; display: block;
+  }
+  .shots figcaption { font-size: 7.5pt; color: var(--muted); margin-top: 1.2mm; line-height: 1.3; }
+
+  .two { display: flex; gap: 4mm; }
+  .two > div { flex: 1; }
+  ul.tight { margin: 0; padding-left: 4mm; }
+  ul.tight li { margin-bottom: 1.1mm; }
+
+  .credits { font-size: 7.1pt; color: var(--muted); line-height: 1.34; margin-bottom: 4mm; }
+  .credits b { color: var(--ink); }
+
+  .foot {
+    position: absolute; left: 13mm; right: 13mm; bottom: 6mm;
+    border-top: 0.7pt solid var(--line); padding-top: 1.6mm;
+    font-size: 7.3pt; color: var(--muted); display: flex; justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================== PAGE 1 ============================== -->
+<section class="page">
+  <div class="masthead">
+    <h1>StreamLens</h1>
+    <p class="tagline">A second pair of eyes for citizen stream assessments — the citizen always decides.</p>
+    <span class="track">Primary Track 1: Citizen Science UX
+      <span>· also 3 (AI-supported assessment), 2 (data to insight), 6 (early warning), 5 (community), 7 (FHIR)</span>
+    </span>
+  </div>
+
+  <div class="links">
+    <div class="link">
+      <div class="what">Live demo</div>
+      <div class="where">streamlens-ten.vercel.app</div>
+    </div>
+    <div class="link">
+      <div class="what">Code</div>
+      <div class="where">github.com/Mitalimehta02/streamlens</div>
+    </div>
+    <div class="link placeholder" data-placeholder="video">
+      <div class="what">Video</div>
+      <div class="where">&lt;YOUTUBE_URL&gt; — to be added</div>
+    </div>
+  </div>
+
+  <p class="note">
+    The API runs on a free Render instance. A scheduled ping every ten minutes keeps it awake;
+    if it has been idle anyway, the first request takes about <b>42.7&nbsp;s</b> and every
+    request after it is under a second. No account, no sign-in, nothing to install.
+  </p>
+
+  <h2>The problem</h2>
+  <p>
+    Urban streams are where ecosystem health and human health meet, and they are in trouble:
+    across 100 urban stream sites in five European cities, the OneAquaHealth policy brief reports that
+    <b>“pharmaceuticals were detected in 91% of monitored sites”</b>.
+  </p>
+  <p>
+    Monitoring that closely is expensive, so the gaps between official surveys are filled — if at all —
+    by volunteers, who are asked ecology questions in vocabulary they were never taught.
+  </p>
+  <p class="muted">
+    StreamLens does not replace the expert. It makes the volunteer’s twenty minutes on the bank produce
+    a record a scientist can actually use, and it refuses to guess on their behalf.
+  </p>
+
+  <h2>The loop</h2>
+  <div class="loop">
+    <div>
+      <h3>1 · Observe</h3>
+      <p>
+        Photograph the reach upstream and downstream. A vision model drafts answers to the
+        OneAquaHealth question set as suggestion chips, each with a confidence and a one-sentence
+        reason pointing at something in the picture. The citizen accepts, changes or rejects every
+        one. Plain-language glossary, six languages, works offline.
+      </p>
+    </div>
+    <div>
+      <h3>2 · Understand &amp; act</h3>
+      <p>
+        A stream health card built only from citizen-confirmed answers. A 48-hour alert that shows
+        its own arithmetic: the measured value, the threshold it crossed, and where that threshold
+        came from. Observed problems map to restoration measures from the OneAquaHealth D2.4
+        catalogue, cited to the page.
+      </p>
+    </div>
+    <div>
+      <h3>3 · Return</h3>
+      <p>
+        Quests computed from real gaps in the record — a site nobody has seen this season, a reach
+        that needs a second opinion. Points for evidence quality and for filling gaps, never for
+        volume. Teams on the leaderboard, never individuals. A wellbeing mirror reported only in
+        groups of ten or more.
+      </p>
+    </div>
+  </div>
+
+  <h2>Judge quick tour — about four minutes</h2>
+  <ol class="tour">
+    <li><b>Pick a site.</b> All 106 OneAquaHealth / ENORA research sites, across Benevento, Coimbra,
+      Ghent, Oslo and Toulouse. No location permission needed.</li>
+    <li><b>Choose whether the AI helps.</b> With it, a shrunk and EXIF-stripped copy of your
+      photographs goes to Google Gemini under its free-tier terms. Without it, <b>no request is made
+      at all</b> — verified in a browser, not merely promised. Both paths ask the same questions and
+      record the same data.</li>
+    <li><b>Photograph upstream and downstream</b>, or open <b>“Try with sample photos”</b> for six
+      Creative Commons images. One has no water in it: the assessment should refuse that one rather
+      than guess.</li>
+    <li><b>Confirm every answer.</b> Where you disagree with the AI, both answers are kept. The
+      Good / Moderate / Poor rating is never suggested.</li>
+    <li><b>Read what came back.</b> <i>Explore</i> holds the health card, the alerts with their
+      thresholds and sources, and the measures. <i>Community</i> holds coverage, teams, the wellbeing
+      mirror and the <b>FHIR R4 export</b>.</li>
+  </ol>
+
+  <h2>Built in the open</h2>
+  <p class="muted">
+    Monorepo: FastAPI + SQLModel on Render, React + Vite PWA on Vercel, Postgres on Neon — every tier
+    free. 279 API tests and 22 web tests, none touching the network. Lighthouse mobile on the live
+    site: <b>94 performance, 100 accessibility, 100 best practices, 100 SEO</b>. Built 23–27 September 2026.
+  </p>
+
+  <div class="foot">
+    <span>StreamLens · IEEE OneAquaHealth Global Hackathon 2026</span>
+    <span>Page 1 of 2</span>
+  </div>
+</section>
+
+<!-- ============================== PAGE 2 ============================== -->
+<section class="page">
+  <h2>Responsible AI — the guard is in the code, not the prompt</h2>
+  <div class="guards">
+    <div>
+      <h3>1 · The prompt</h3>
+      <p>The model is told to answer “not sure” rather than guess, and to stay silent on any image
+        with no watercourse in it.</p>
+    </div>
+    <div>
+      <h3>2 · The validation gate</h3>
+      <p>Every code the model returns is checked against the published question set before a citizen
+        sees it. An invented code is refused at confidence 1.0.</p>
+    </div>
+    <div>
+      <h3>3 · The interface</h3>
+      <p>Every suggestion starts unanswered. The record stores the citizen’s answer <i>and</i> what
+        the AI suggested — never the AI’s answer alone.</p>
+    </div>
+  </div>
+
+  <div class="figures">
+    <div><div class="n">13 / 13</div><div class="l">images with no watercourse<br>where it stayed silent</div></div>
+    <div><div class="n">90% / 92%</div><div class="l">agreement, exact match<br>and set overlap</div></div>
+    <div><div class="n">0</div><div class="l">invented answer codes<br>across 187 suggestions</div></div>
+    <div><div class="n">6 of 24</div><div class="l">questions the AI is never<br>allowed to suggest</div></div>
+  </div>
+
+  <div class="callout">
+    <b>Read “agreement”, not “accuracy”.</b> There were no human expert labels. The labeller is one AI
+    (Claude) and the model under test is another (Gemini); two systems agreeing is not either being
+    right. The sample is 29 freely-licensed photographs and 58 scored comparisons — far too small for
+    a confident claim in either direction. The README names the three disagreements an ecologist would
+    catch first, including a question we reworded on a guess at intent, and asks to be corrected.
+  </div>
+
+  <h2>Standards</h2>
+  <p>
+    Every assessment exports as <b>FHIR R4</b> — a <code>LocationOah</code>, one
+    <code>ObservationIndicatorsOah</code> per answered question, and a <code>Provenance</code> naming
+    the citizen by pseudonymous identifier and the AI as an <code>assembler</code> Device with its
+    model and prompt version. Validated with the official HL7 validator against the
+    <b>hl7-eu/oah</b> profiles: <b>0 errors, 0 warnings</b>. A negative control — one Observation
+    deliberately broken — is committed alongside, to prove the profiles were really applied and not
+    silently skipped.
+  </p>
+
+  <div class="shots">
+    <figure>
+      <img src="img/observe-chips.png" alt="AI suggestion chips with confidence and reasons">
+      <figcaption><b>The AI suggests.</b> Each chip carries a confidence and a reason pointing at
+        something in the photograph. Nothing is recorded until the citizen presses Correct, Not
+        right, or Change answer.</figcaption>
+    </figure>
+    <figure>
+      <img src="img/alert-thresholds.png" alt="An alert showing measured value, threshold and source">
+      <figcaption><b>Every alert shows its arithmetic.</b> The measured value, the threshold it
+        crossed, and where that threshold came from — including, where honest, “project judgement”.</figcaption>
+    </figure>
+  </div>
+
+  <div class="two">
+    <div>
+      <h2>Path to production</h2>
+      <ul class="tight">
+        <li><b>Expert in the loop.</b> A review queue for flagged observations — low confidence, a
+          disagreement with a nearby visit, or an overridden refusal.</li>
+        <li><b>Identity from the OneAquaHealth app</b>, not a second account system, which also
+          brings the moderation a public dataset needs.</li>
+        <li><b>Integration by data.</b> Answer codes and the FHIR export already target the
+          consortium’s own definitions.</li>
+        <li><b>Cost.</b> $0.0022 per photograph measured; about $4 per 1,000 assessments a month
+          and $40 per 10,000.</li>
+        <li><b>Ownership.</b> Hand it to the citizen-science work package under the MIT licence it
+          already carries.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Known limits</h2>
+      <ul class="tight">
+        <li>No expert validated the evaluation; both labeller and model are AI.</li>
+        <li>Most demo data is synthetic and every synthetic record says so. Two sites carry a
+          planted forecast, badged <b>DEMO FORECAST</b>, so the rain rules can be shown on a dry day.</li>
+        <li>All six languages are machine-translated and not yet reviewed by native speakers.</li>
+        <li>No authentication: anyone who can reach the API can post an assessment.</li>
+        <li>Photographs are not stored on the hosted demo — measured, then discarded.</li>
+        <li>The PWA install has not been tried on a physical phone.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Credits</h2>
+  <p class="credits">
+    <b>Research sites:</b> OneAquaHealth / ENORA API, 106 sites across five cities.
+    <b>Restoration measures:</b> <i>D2.4 Catalogue of measures for urban aquatic ecosystems
+    rehabilitation</i>, Dias, M., Serra, S.R.Q. &amp; Feio, M.J. (University of Coimbra),
+    OneAquaHealth, Horizon Europe Grant Agreement 101086521, DOI 10.5281/zenodo.20040211, CC-BY-4.0.
+    <b>Problem statement:</b> <i>OneAquaHealth Policy Brief — Urban stream ecosystem health as a One
+    Health priority</i>, P da Silva, J.; Serra, S.R.Q.; Calapez, A.R.; Schmeller, D.S.; Freitas, Â.;
+    Dantas, C.; Forio, M.A.E.; op den Akker, H.; Havrevold Henni, S.; Feio, M.J., 2026,
+    DOI 10.5281/zenodo.21476580, CC-BY-4.0.
+    <b>Weather:</b> Open-Meteo, CC-BY-4.0. <b>Map tiles:</b> © OpenStreetMap contributors, ODbL.
+    <b>Sample photographs:</b> six Creative Commons or public domain images from Wikimedia Commons,
+    each credited individually in the repository. <b>StreamLens code:</b> MIT.
+  </p>
+
+  <div class="foot">
+    <span>streamlens-ten.vercel.app · github.com/Mitalimehta02/streamlens</span>
+    <span>Page 2 of 2</span>
+  </div>
+</section>
+
+</body>
+</html>
