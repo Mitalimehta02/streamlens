@@ -2,11 +2,17 @@
 
 Written for: the judges and anyone picking this repository up mid-build.
 
-Last updated: 24 September 2026.
+Last updated: 27 September 2026.
 
 Phase 1 delivered the **Observe** vertical slice. Phase 1.5 measured the vision
-prompt against real photographs. Phase 2 built **Understand & Act**. Phase 3 built **Return & Standards**. This document says exactly which is which, because a demo
-that hides its seams wastes a reviewer's time.
+prompt against real photographs. Phase 2 built **Understand & Act**. Phase 3 built **Return & Standards**. Phase 4 deployed it. This document says exactly which is
+which, because a demo that hides its seams wastes a reviewer's time.
+
+**Live:** <https://streamlens-ten.vercel.app> (API:
+<https://streamlens-api.onrender.com>). The hosted demo does not behave
+identically to a local checkout, and [the differences are listed
+below](#the-hosted-demo-versus-a-local-checkout) rather than left for a reviewer
+to discover.
 
 ---
 
@@ -74,7 +80,10 @@ documented in `web/src/index.css`, labelled controls, and a glossary built as a
 tappable popover rather than a hover tooltip — hover does not exist on a phone.
 
 ### Tests
-- **168 pytest tests**, none touching the network.
+- **274 pytest tests**, none touching the network. `pytest.ini` lives at the
+  repository root: when it lived in `api/`, running `pytest` from the root
+  picked up no configuration and seven async tests skipped themselves while
+  the run still reported success.
 - **22 vitest tests** covering the answer state machine and the offline outbox.
 - TypeScript compiles clean under `strict`.
 
@@ -87,12 +96,69 @@ tappable popover rather than a hover tooltip — hover does not exist on a phone
 | **Gemini provider** | Verified against the live API | Runs on `gemini-3.5-flash-lite`. `gemini-2.5-flash` is retired for new keys and `gemini-3.6-flash` returned 503 on every one of 29 sequential calls, so it is unusable under load. |
 | **Question translations** | English and Portuguese complete; it, fr, nl, no fall back to English | Priority was the working vertical slice. Interface chrome *is* translated into all six. |
 | **All translations** | Ours, not the consortium's | Flagged `machine_translated` in the data and warned about in the UI. A native speaker should review before field use. |
-| **Photo storage** | Files on local disk | Fine for a demo; a real deployment needs object storage and a retention policy. |
+| **Photo storage** | Files on local disk when running locally; **nothing stored at all on the hosted demo** | `STORE_PHOTOS=false` in production keeps the quality measurements and discards the image, which is why nothing can be served publicly. A real deployment that wanted to keep photographs would need object storage: Render's free disk is wiped on every deploy. Locally, stored files are deleted after `PHOTO_RETENTION_DAYS` (14). |
 | **Authentication** | None | Anyone who can reach the API can post an observation. Acceptable for a hackathon demo, not for production. |
 | **`GET /observations`** | Unpaginated, capped at 200 | Demo convenience endpoint, not a real query API. |
-| **PWA install** | Manifest and service worker build correctly | Not tested on a physical phone. |
+| **PWA install** | Manifest and service worker build and serve over HTTPS on the live site | Not tested on a physical phone. |
 | **"Answer contradicts the photo" check** | Not built | Blur, brightness, GPS distance and the watercourse gate exist. Cross-answer consistency does not. |
 
+
+---
+
+## The hosted demo versus a local checkout
+
+Six things behave differently in production. All six are configuration, not
+different code paths, and each is set in [`render.yaml`](../render.yaml).
+
+| | Local | Hosted |
+|---|---|---|
+| **Database** | SQLite file in `api/` | Postgres on Neon. The provider's URL is rewritten to the installed driver, and pooled connections are pre-pinged because Neon suspends its compute when idle and drops them with it. |
+| **Photographs** | Stored, deleted after 14 days | `STORE_PHOTOS=false`: measured, then discarded. Nothing is written to disk, so nothing can be shown publicly and there is nothing left to delete. |
+| **Demo data** | Seeded when you run `python scripts/seed_demo.py` | Seeded on first start, because `SEED_DEMO=true`, and only when the database is empty, so a redeploy neither duplicates it nor touches real submissions. |
+| **AI provider** | `mock` unless you supply a key | Gemini, capped at 10 calls per device per hour and 300 a day. Past either cap an assessment still succeeds, on the labelled mock, with a visible notice — never an error. |
+| **CORS** | localhost only | The one Vercel origin. A request from anywhere else is refused, because a wildcard would let any site on the internet spend the Gemini quota. |
+| **Cold start** | None | A free Render instance sleeps after about fifteen minutes idle and takes roughly a minute to wake. A GitHub Actions workflow pings `/health` every ten minutes to prevent it; `/health` opens no database connection, so the ping costs nothing in Neon compute hours. |
+
+### Two things a reviewer should know about the demo data
+
+**Planted forecasts.** Two of the three weather-driven alert rules need rain to
+fire. Rather than wait for rain in Coimbra, the seed plants a forecast at one
+site per rule. Those rows are labelled, the API reports the label, and the UI
+shows **DEMO FORECAST** wherever the number appears. They are rebased onto the
+current clock rather than expiring, so the rule still demonstrates itself weeks
+later; delete the row (`python scripts/seed_demo.py --reset`) to get the real
+forecast back. The third rule, mosquito breeding conditions, needs no help:
+warm weather is common enough to fire on its own.
+
+**The synthetic flag is the boundary.** Every seeded record carries
+`synthetic: true`, and the *Showing* toggle on Explore and Community switches
+between all data, real only and demo only. Anything a reviewer submits
+themselves is real, and appears under "real only".
+
+### Verified against the live deployment, 27 September 2026
+
+Server-side, with a device id that had never been seen before:
+
+- a real Gemini assessment of the bundled Benevento pair — 10 suggestions, no
+  degradation, `is_watercourse: true`;
+- the watercourse gate refusing the photograph with no water in it, with a
+  reason and zero suggestions;
+- an assessment submitted with both photographs, both passing the quality
+  checks, EXIF stripped;
+- 46 points, of which 20 for completing the `after_rain` quest;
+- a health card built only from citizen-confirmed answers;
+- both rain-driven alerts firing on their planted forecasts, badged
+  DEMO FORECAST;
+- a six-resource FHIR bundle for one assessment, and a 25-entry bundle for
+  Coimbra.
+
+Lighthouse 12, mobile preset, against the live site: performance 95,
+accessibility 100, best practices 96, SEO 100. **These numbers were taken while
+the API was still refusing the Vercel origin**, so the app rendered its error
+state instead of loading anything: that makes the performance figure flattering
+and is the whole of the best-practices deduction (two blocked requests logged as
+console errors). They are due to be taken again once the origin is allowed. The
+same build measured 91 / 100 / 100 / 100 locally with the API reachable.
 
 ---
 

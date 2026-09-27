@@ -8,9 +8,13 @@ IEEE OneAquaHealth Global Hackathon 2026.
 
 | | |
 | --- | --- |
-| **Live demo** | _not deployed yet_ |
-| **API** | _not deployed yet_ |
+| **Live demo** | **<https://streamlens-ten.vercel.app>** |
+| **API** | <https://streamlens-api.onrender.com> — [interactive docs](https://streamlens-api.onrender.com/docs) |
 | **Runs locally** | `npm run setup && npm run dev` — no key needed |
+
+The API is on a free Render instance. If it has been idle for a quarter of an
+hour the first request wakes it, which takes about a minute; a scheduled ping
+every ten minutes normally prevents that.
 
 The demo needs no account and no sign-in. It carries labelled synthetic data so
 the maps and alerts have something to show; every synthetic record says

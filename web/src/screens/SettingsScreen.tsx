@@ -138,7 +138,7 @@ export function SettingsScreen({
       </Card>
 
       <p className="text-xs text-muted">
-        <a className="underline" href="https://github.com/Hackathons-4thyear/streamlens/blob/main/docs/privacy.md" target="_blank" rel="noreferrer">
+        <a className="underline" href="https://github.com/Mitalimehta02/streamlens/blob/main/docs/privacy.md" target="_blank" rel="noreferrer">
           {t("settings.privacyLink")}
         </a>
       </p>
