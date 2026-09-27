@@ -116,7 +116,7 @@ different code paths, and each is set in [`render.yaml`](../render.yaml).
 | **Photographs** | Stored, deleted after 14 days | `STORE_PHOTOS=false`: measured, then discarded. Nothing is written to disk, so nothing can be shown publicly and there is nothing left to delete. |
 | **Demo data** | Seeded when you run `python scripts/seed_demo.py` | Seeded on first start, because `SEED_DEMO=true`, and only when the database is empty, so a redeploy neither duplicates it nor touches real submissions. |
 | **AI provider** | `mock` unless you supply a key | Gemini, capped at 10 calls per device per hour and 300 a day. Past either cap an assessment still succeeds, on the labelled mock, with a visible notice — never an error. |
-| **CORS** | localhost only | The one Vercel origin. A request from anywhere else is refused, because a wildcard would let any site on the internet spend the Gemini quota. |
+| **CORS** | localhost only | The Vercel origin, plus localhost so a developer can point a local web app at the hosted API. A wildcard would let any site on the internet spend the Gemini quota. The list is committed in `render.yaml` rather than typed into the dashboard, because a dashboard value against a `sync: false` key never reached the process, and `/health` now reports the list so that failure is visible from outside. |
 | **Cold start** | None | A free Render instance sleeps after about fifteen minutes idle and takes roughly a minute to wake. A GitHub Actions workflow pings `/health` every ten minutes to prevent it; `/health` opens no database connection, so the ping costs nothing in Neon compute hours. |
 
 ### Two things a reviewer should know about the demo data
@@ -152,13 +152,27 @@ Server-side, with a device id that had never been seen before:
 - a six-resource FHIR bundle for one assessment, and a 25-entry bundle for
   Coimbra.
 
-Lighthouse 12, mobile preset, against the live site: performance 95,
-accessibility 100, best practices 96, SEO 100. **These numbers were taken while
-the API was still refusing the Vercel origin**, so the app rendered its error
-state instead of loading anything: that makes the performance figure flattering
-and is the whole of the best-practices deduction (two blocked requests logged as
-console errors). They are due to be taken again once the origin is allowed. The
-same build measured 91 / 100 / 100 / 100 locally with the API reachable.
+Then through a real browser, from a clean profile, driven over the Chrome
+DevTools Protocol: the catalogue loaded, the quick tour opened, a site was
+chosen, AI help was accepted, both photo slots were filled from the bundled
+samples, the real model returned suggestions in about ten seconds, the citizen's
+own rating was set on a screen that says "The AI has no opinion here, by
+design", the assessment was sent, and the confirmation showed 26 points with the
+breakdown. **Zero console errors and zero failed requests.**
+
+Lighthouse 12, mobile preset, against the live site, two consecutive runs:
+performance 84 then 90, accessibility 100 in both, best practices 100 in both,
+SEO 100 then 92. Both are recorded rather than the better one. The performance
+spread is the first screen waiting on `/sites` (1.7 s) and `/questions` (1.5 s)
+from a free instance, plus OpenStreetMap tiles at about 1.2 s each; the same
+build scores 91 with the API on localhost, so the gap is the network rather than
+the bundle. The SEO dip was a failed `robots.txt` fetch during the audit - the
+file serves 200 with valid content.
+
+An earlier measurement of 95 / 100 / 96 / 100 is not comparable and is recorded
+here only so the drop is not mistaken for a regression: it was taken while the
+API was still refusing the Vercel origin, so the app rendered its error state
+and did almost no work.
 
 ---
 

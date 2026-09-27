@@ -49,12 +49,25 @@ quota is spent, and the per-threshold **source** line under every alert.
 
 ### Measured
 
-Lighthouse 12, mobile preset (emulated Moto G Power, throttled 4G), production
-build served locally with the API reachable:
+Lighthouse 12, mobile preset (emulated Moto G Power, throttled 4G), against the
+live site above, two consecutive runs:
 
-| Performance | Accessibility | Best practices | SEO |
-| --- | --- | --- | --- |
-| 91 | 100 | 100 | 100 |
+| | Performance | Accessibility | Best practices | SEO |
+| --- | --- | --- | --- | --- |
+| Run 1 | 84 | 100 | 100 | 100 |
+| Run 2 | 90 | 100 | 100 | 92 |
+
+Both runs are reported rather than the better one. Performance varies because
+the first screen waits for the site catalogue and the question set from a free
+Render instance in Frankfurt: those two requests took 1.7 s and 1.5 s in the
+slower run, and the map tiles come from OpenStreetMap at about 1.2 s each. The
+SEO dip in run 2 was a failed fetch of `robots.txt` during the audit; the file
+serves 200 with valid content. The same build scores 91 with the API on
+localhost, which is the honest way to read the gap: it is the network, not the
+bundle.
+
+A cold start is worse than any of this. Measured on 27 September after
+seventeen minutes of silence: **42.7 s** for the first request, then 0.56 s.
 
 Hosting is Render (API), Neon (Postgres) and Vercel (web app), all on free
 tiers, with a GitHub Actions ping every ten minutes so the free instance does
